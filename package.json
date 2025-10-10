@@ -7,10 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    // The export script should run `next export` instead of `next build`.  When
-    // `output: 'export'` is enabled in next.config.js, `next build` will
-    // automatically generate a static `out` directory, but defining the
-    // script correctly improves clarity and allows manual invocation.
     "export": "next export"
   },
   "dependencies": {
