@@ -1,25 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
+  // xuất site tĩnh cho GitHub Pages
   output: 'export',
-  trailingSlash: true,
-  images: {
-    unoptimized: true,
-  },
-  basePath: process.env.NODE_ENV === 'production' ? '/ai-skincare-platform' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/ai-skincare-platform/' : '',
-  
-  // Enable gzip compression
-  compress: true,
-  
-  // Webpack configuration for production optimization
-  webpack: (config, { dev, isServer }) => {
-    // Minimize JS in production
-    if (!dev) {
-      config.optimization.minimize = true;
-    }
-    
-    return config;
-  },
-};
 
-module.exports = nextConfig;
+  // Vì bạn dùng custom domain (root domain), KHÔNG có subpath,
+  // nên để trống cả basePath và assetPrefix để _next/static tải đúng.
+  basePath: '',
+  assetPrefix: '',
+
+  // Để Next export ảnh mà không qua Image Optimization server
+  images: { unoptimized: true },
+};

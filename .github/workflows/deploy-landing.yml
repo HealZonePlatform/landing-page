@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # cho phép gh-pages action push lên nhánh gh-pages
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -39,5 +39,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./out
-          # Bỏ comment nếu bạn có custom domain:
-          # cname: your.domain.com
+          cname: horizonskincare.online
