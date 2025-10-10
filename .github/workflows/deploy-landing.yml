@@ -3,85 +3,41 @@ name: Deploy Landing Page
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write   # cho phép gh-pages action push lên nhánh gh-pages
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: frontend/landing-website/package-lock.json
+          node-version: 18
+          cache: npm
 
       - name: Install dependencies
-        run: |
-          cd frontend/landing-website
-          npm ci
+        run: npm ci
 
-      - name: Run build
-        run: |
-          cd frontend/landing-website
-          npm run build
+      - name: Build (Next.js static export -> out/)
+        run: npm run build
         env:
           NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}
           NEXT_PUBLIC_HOTJAR_ID: ${{ secrets.NEXT_PUBLIC_HOTJAR_ID }}
           NEXT_PUBLIC_CLARITY_ID: ${{ secrets.NEXT_PUBLIC_CLARITY_ID }}
           NEXT_PUBLIC_FORMSPREE_ENDPOINT: ${{ secrets.NEXT_PUBLIC_FORMSPREE_ENDPOINT }}
 
-      - name: Run linting
-        run: |
-          cd frontend/landing-website
-          npm run lint || echo "Linting issues found, but continuing with deployment"
-
-      - name: Run tests
-        run: |
-          cd frontend/landing-website
-          npm run test || echo "Tests failed, but continuing with deployment"
-
-      # Upload the static export instead of the .next directory.  When
-      # `output: 'export'` is used, Next.js places the fully static site
-      # into the `out` directory.  Publishing this directory avoids
-      # deploying server-only files.
-      - name: Upload export artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: nextjs-export
-          path: frontend/landing-website/out/
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Download export artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: nextjs-export
-          path: frontend/landing-website/out/
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/landing-website/out
           publish_branch: gh-pages
-          cname: healzoneplatform.github.io
+          publish_dir: ./out
+          # Bỏ comment nếu bạn có custom domain:
+          # cname: your.domain.com
