@@ -2,12 +2,22 @@
 import { GoogleGenerativeAI, SchemaType, type Schema } from "@google/generative-ai";
 import type { SkincareRoutine } from "@/types";
 
-const API_KEY = process.env.API_KEY;
-if (!API_KEY) throw new Error("API_KEY environment variable is not set");
+// ✅ THÊM PHẦN NÀY - Lazy initialization pattern
+let genAI: GoogleGenerativeAI | null = null;
+let model: any = null;
 
-const genAI = new GoogleGenerativeAI(API_KEY);
-// Tuỳ nhu cầu: "gemini-1.5-pro" hoặc "gemini-2.0-flash"
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+function getModel() {
+  if (!model) {
+    const API_KEY = process.env.API_KEY;
+    if (!API_KEY) {
+      throw new Error("API_KEY environment variable is not set");
+    }
+    genAI = new GoogleGenerativeAI(API_KEY);
+    model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+  }
+  return model;
+}
+
 
 // 👇 Quan trọng: dùng kiểu Schema, KHÔNG 'as const'
 const responseSchema: Schema = {
@@ -46,7 +56,11 @@ const responseSchema: Schema = {
   required: ["skinType", "concerns", "amRoutine", "pmRoutine", "disclaimer"]
 };
 
+
 export async function analyzeSkin(imageBase64: string, mimeType: string): Promise<SkincareRoutine> {
+  // ✅ Lấy model qua lazy initialization - chỉ chạy lúc runtime
+  const modelInstance = getModel();
+  
   const imagePart = { inlineData: { data: imageBase64, mimeType } };
   const textPart = {
     text: `Với vai trò là một chuyên gia da liễu AI, hãy phân tích hình ảnh khuôn mặt này.
@@ -54,7 +68,8 @@ Xác định loại da & vấn đề chính. Tạo quy trình AM/PM (step, produ
 Kết thúc bằng disclaimer. Trả lời tiếng Việt. Chỉ xuất JSON theo schema.`
   };
 
-  const resp = await model.generateContent({
+
+  const resp = await modelInstance.generateContent({
     contents: [{ role: "user", parts: [imagePart, textPart] }],
     generationConfig: {
       responseMimeType: "application/json",
@@ -62,6 +77,7 @@ Kết thúc bằng disclaimer. Trả lời tiếng Việt. Chỉ xuất JSON the
       temperature: 0.5
     }
   });
+
 
   const text = resp.response.text();
   try {
