@@ -7,50 +7,58 @@ import { Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
+/**
+ * Global metadata configuration for the Horizon Skincare landing page.
+ *
+ * The metadata values here are tailored for the Vietnamese audience,
+ * aligning with the updated branding and using the new custom domain
+ * `horizonskincare.online`. OpenGraph and Twitter tags ensure rich
+ * previews when links are shared on social media. The `lang` attribute
+ * of the `<html>` element is set to `vi` for better accessibility and
+ * SEO in Vietnamese search results.
+ */
 export const metadata: Metadata = {
   title: {
-    default: 'AI Skincare Platform | Transform Your Skincare Journey',
-    template: '%s | AI Skincare Platform',
+    default: 'Horizon Skincare AI | Nâng Tầm Hành Trình Chăm Sóc Da',
+    template: '%s | Horizon Skincare AI',
   },
   description:
-    'Get professional skin analysis and personalized recommendations with our AI-powered skincare platform. 96% accuracy, 30-second analysis.',
+    'Nâng tầm hành trình chăm sóc da với phân tích AI chính xác và lộ trình cá nhân hoá.',
   keywords: [
     'AI skincare',
-    'skin analysis',
-    'personalized skincare',
-    'dermatology AI',
-    'beauty tech',
+    'phân tích da',
+    'chăm sóc da cá nhân',
+    'công nghệ làm đẹp',
     'skincare routine',
-    'skincare app',
-    'AI beauty',
+    'ứng dụng chăm sóc da',
   ],
-  authors: [{ name: 'HealZone Platform' }],
-  creator: 'HealZone Platform',
-  publisher: 'HealZone Platform',
+  authors: [{ name: 'Horizon Skincare' }],
+  creator: 'Horizon Skincare',
+  publisher: 'Horizon Skincare',
   openGraph: {
-    title: 'AI Skincare Platform | Transform Your Skincare Journey',
+    title: 'Horizon Skincare AI | Nâng Tầm Hành Trình Chăm Sóc Da',
     description:
-      'Get professional skin analysis and personalized recommendations with our AI-powered skincare platform. 96% accuracy, 30-second analysis.',
-    url: 'https://healzoneplatform.github.io/ai-skincare-platform/',
-    siteName: 'AI Skincare Platform',
+      'Nâng tầm hành trình chăm sóc da với phân tích AI chính xác và lộ trình cá nhân hoá.',
+    url: 'https://horizonskincare.online/',
+    siteName: 'Horizon Skincare AI',
     images: [
       {
-        url: '/ai-skincare-platform/og-image.jpg',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'AI Skincare Platform - Transform Your Skincare Journey',
+        alt: 'Horizon Skincare AI - Nâng Tầm Hành Trình Chăm Sóc Da',
       },
     ],
-    locale: 'en_US',
+    locale: 'vi_VN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Skincare Platform | Transform Your Skincare Journey',
+    title: 'Horizon Skincare AI | Nâng Tầm Hành Trình Chăm Sóc Da',
     description:
-      'Get professional skin analysis and personalized recommendations with our AI-powered skincare platform.',
-    images: ['/ai-skincare-platform/og-image.jpg'],
-    creator: '@healzoneplatform',
+      'Nâng tầm hành trình chăm sóc da với phân tích AI chính xác và lộ trình cá nhân hoá.',
+    images: ['/og-image.jpg'],
+    creator: '@horizonskincare',
   },
   robots: {
     index: true,
@@ -64,7 +72,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://healzoneplatform.github.io/ai-skincare-platform/',
+    canonical: 'https://horizonskincare.online/',
   },
   verification: {
     google: 'google-site-verification-code',
@@ -77,83 +85,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="vi" className={inter.className}>
       <head>
-        <link rel="icon" href="/ai-skincare-platform/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          href="/ai-skincare-platform/apple-touch-icon.png"
-        />
-        <link
-          rel="manifest"
-          href="/ai-skincare-platform/site.webmanifest"
-        />
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Website',
-              name: 'AI Skincare Platform',
-              url: 'https://healzoneplatform.github.io/ai-skincare-platform/',
-              description:
-                'Get professional skin analysis and personalized recommendations with our AI-powered skincare platform. 96% accuracy, 30-second analysis.',
-              publisher: {
-                '@type': 'Organization',
-                name: 'HealZone Platform',
-                logo: {
-                  '@type': 'ImageObject',
-                  url: 'https://healzoneplatform.github.io/ai-skincare-platform/logo.png',
-                },
-              },
-            }),
-          }}
-        />
+        {/* Structured data improves SEO and helps search engines understand your site. */}
         <StructuredData />
-        {/* Hotjar Tracking Code
-           Only render if the HOTJAR ID environment variable is defined. Without
-           this check the template literal would embed `undefined`, breaking the
-           snippet. */}
-        {process.env.NEXT_PUBLIC_HOTJAR_ID && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(h,o,t,j,a,r){
-                  h.hj = h.hj || function(){(h.hj.q = h.hj.q || []).push(arguments)};
-                  h._hjSettings = {hjid: ${process.env.NEXT_PUBLIC_HOTJAR_ID}, hjsv: 6};
-                  a = o.getElementsByTagName('head')[0];
-                  r = o.createElement('script'); r.async=1;
-                  r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-                  a.appendChild(r);
-                })(window, document, 'https://static.hotjar.com/c/hotjar-',' .js?sv=');
-              `,
-            }}
-          />
-        )}
-
-        {/* Microsoft Clarity Tracking Code
-           Only render if the CLARITY ID environment variable is defined. */}
-        {process.env.NEXT_PUBLIC_CLARITY_ID && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(c,l,a,r,i,t,y){
-                  c[a] = c[a] || function (){ (c[a].q = c[a].q || []).push(arguments) };
-                  t=l.createElement(r); t.async=1; t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t,y);
-                })(window, document, 'clarity', 'script', "${process.env.NEXT_PUBLIC_CLARITY_ID}");
-              `,
-            }}
-          />
-        )}
       </head>
-      <body className={inter.className}>
+      <body>
+        {/* Global site tag for Google Analytics, injected only when the
+            corresponding environment variable is provided. */}
+        <GoogleAnalytics />
         {children}
-        {/* Google Analytics wrapped in Suspense to avoid build errors with useSearchParams */}
-        <Suspense>
-          <GoogleAnalytics />
-        </Suspense>
       </body>
     </html>
   );
