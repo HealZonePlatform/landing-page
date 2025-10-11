@@ -10,4 +10,5 @@ export type SkincareRoutine = {
   amRoutine: RoutineStep[];
   pmRoutine: RoutineStep[];
   disclaimer: string;
+  imageUrl?: string; // Thêm trường imageUrl để hiển thị ảnh trong kết quả phân tích
 };

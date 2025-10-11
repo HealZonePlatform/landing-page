@@ -109,9 +109,10 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
 export default function DemoPage() {
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Add state for preview URL
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SkincareRoutine | null>(null);
-  const [error, setError] = useState<string | null>(null);
+ const [error, setError] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [analysisProgress, setAnalysisProgress] = useState(0);
   const [isDragActive, setIsDragActive] = useState(false);
@@ -197,7 +198,17 @@ export default function DemoPage() {
       
       if (!res.ok) throw new Error(data?.error || "Phân tích thất bại");
       if (!data) throw new Error("Dữ liệu phản hồi không hợp lệ");
-      setResult(data as SkincareRoutine);
+      
+      // Thêm imageUrl vào kết quả nếu có file ảnh
+      if (file && previewUrl) {
+        const resultWithImage = {
+          ...data,
+          imageUrl: previewUrl
+        } as SkincareRoutine;
+        setResult(resultWithImage);
+      } else {
+        setResult(data as SkincareRoutine);
+      }
     } catch (err: any) {
       // Stop any running intervals in case of error
       if (processingInterval) clearInterval(processingInterval);
@@ -239,6 +250,15 @@ export default function DemoPage() {
       setError("Tệp không hợp lệ");
       return;
     }
+    
+    // Revoke previous preview URL if exists
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+    
+    // Create new preview URL
+    const newPreviewUrl = URL.createObjectURL(selectedFile);
+    setPreviewUrl(newPreviewUrl);
     setFile(selectedFile);
     setError(null);
   };
@@ -295,20 +315,17 @@ export default function DemoPage() {
 
 
   const resetForm = () => {
-    // Dọn dẹp URL object trước khi xóa file
-    if (file) {
-      try {
-        URL.revokeObjectURL(URL.createObjectURL(file));
-      } catch (error) {
-        console.error('Error revoking object URL:', error);
-      }
+    // Revoke preview URL if exists
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+      setPreviewUrl(null);
     }
     setFile(null);
     setResult(null);
     setError(null);
     setUploadProgress(0);
     setAnalysisProgress(0);
-  };
+ };
  
   // Hàm hỗ trợ sao chép văn bản
   const fallbackCopyText = (text: string) => {
@@ -342,15 +359,15 @@ export default function DemoPage() {
   // Cleanup URL object when component unmounts or file changes
   useEffect(() => {
     return () => {
-      if (file) {
+      if (previewUrl) {
         try {
-          URL.revokeObjectURL(URL.createObjectURL(file));
+          URL.revokeObjectURL(previewUrl);
         } catch (error) {
           console.error('Error revoking object URL:', error);
         }
       }
     };
-  }, [file]);
+  }, [previewUrl]);
  
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
@@ -444,7 +461,7 @@ export default function DemoPage() {
             </div>
             <div className="relative mx-auto block border-4 border-white rounded-xl shadow-lg overflow-hidden max-w-xs md:max-w-md bg-gray-100">
               <img
-                src={file ? URL.createObjectURL(file) : ''}
+                src={previewUrl || ''}
                 alt="Preview"
                 className="max-w-full h-auto rounded-lg object-contain max-h-80"
                 style={{ minHeight: '200px' }}
@@ -486,7 +503,7 @@ export default function DemoPage() {
               {/* Preview ảnh trong trạng thái loading */}
               <div className="relative mx-auto block border-4 border-white rounded-xl shadow-lg overflow-hidden max-w-xs md:max-w-md bg-gray-100 mb-6">
                 <img
-                  src={URL.createObjectURL(file!)}
+                  src={previewUrl || ''}
                   alt="Preview"
                   className="max-w-full h-auto rounded-lg object-contain max-h-80 opacity-60"
                   style={{ minHeight: '200px' }}

@@ -12,7 +12,29 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    unoptimized: false, // Đổi từ true sang false để kích hoạt tối ưu hóa hình ảnh
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'horizonskincare.online',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**',
+      }
+    ],
+    formats: ['image/webp', 'image/avif'], // Hỗ trợ các định dạng hình ảnh hiện đại
+    minimumCacheTTL: 60, // Thời gian cache tối thiểu là 60 giây
   },
   basePath: '',
   assetPrefix: '',
