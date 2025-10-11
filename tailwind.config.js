@@ -8,29 +8,51 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        /**
+         * Custom brand palette inspired by the Figma mobile designs.
+         *
+         * primary – warm orange used for primary call‑to‑action buttons and highlights.
+         * secondary – muted brown/taupe tones for backgrounds and secondary elements.
+         * neutral – light cream tones for backgrounds and gradients.
+         * darkmode – deep purples for potential dark‑mode components or contrast blocks.
+         * olive – rich olive green for icons and subtle accents.
+         */
         primary: {
-          50: '#fdf2f8',
-          100: '#fce7f3',
-          200: '#fbcfe8',
-          300: '#f9a8d4',
-          400: '#f472b6',
-          500: '#ec4899',
-          600: '#db2777',
-          700: '#be185d',
-          800: '#9d174d',
-          900: '#831843',
+          50:  '#FFF7D3', // very light cream
+          100: '#FCEED2',
+          200: '#F7D9A3',
+          300: '#F0C583',
+          400: '#E8AB5C',
+          500: '#E69534', // main accent orange
+          600: '#D7842C',
+          700: '#B36922',
+          800: '#94571B',
+          900: '#7A4716'
         },
         secondary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50:  '#F5E8C3', // very light beige
+          100: '#E9D8BB',
+          200: '#CBB79A',
+          300: '#B79D7F',
+          400: '#977E64',
+          500: '#A78B6D', // main taupe
+          600: '#8F755C',
+          700: '#705C47',
+          800: '#554037',
+          900: '#4A372E'
+        },
+        neutral: {
+          50:  '#FFF7D3',
+          100: '#F5E8C3',
+          200: '#EADABA'
+        },
+        darkmode: {
+          500: '#44186C',
+          600: '#652D8F',
+          700: '#552A78'
+        },
+        olive: {
+          500: '#5B6239'
         }
       },
       animation: {

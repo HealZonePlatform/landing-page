@@ -67,6 +67,19 @@
   animation-delay: 2s;
 }
 
-.animation-delay-4000 {
+.animation-delay-400 {
   animation-delay: 4s;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scan {
+  animation: scan 1.5s linear infinite;
 }

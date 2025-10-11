@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import StructuredData from '@/components/StructuredData';
 import { Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -109,6 +110,7 @@ export default function RootLayout({
             }),
           }}
         />
+        <StructuredData />
         {/* Hotjar Tracking Code
            Only render if the HOTJAR ID environment variable is defined. Without
            this check the template literal would embed `undefined`, breaking the
