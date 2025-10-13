@@ -113,3 +113,4 @@ temp/
 
 # Turbo
 .turbo
+Credentials.json

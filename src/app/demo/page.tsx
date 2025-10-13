@@ -6,6 +6,7 @@ import type { SkincareRoutine } from "@/types";
 import { AnalysisResult } from "@/components/AnalysisResult";
 
 
+
 // Function to compress and process image
 const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: string; fileSize: number }> => {
   return new Promise((resolve, reject) => {
@@ -13,6 +14,7 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
       reject(new Error('File không phải là hình ảnh'));
       return;
     }
+
 
 
     const canvas = document.createElement('canvas');
@@ -23,6 +25,7 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
     }
 
 
+
     const img = new Image();
     img.onload = () => {
       try {
@@ -30,6 +33,7 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
         const maxWidth = 1024;
         const maxHeight = 1024;
         let { width, height } = img;
+
 
 
         if (width > height) {
@@ -45,8 +49,10 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
         }
 
 
+
         canvas.width = width;
         canvas.height = height;
+
 
 
         // Use high quality image smoothing for better visual results
@@ -54,8 +60,10 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
         ctx.imageSmoothingQuality = 'high';
 
 
+
         // Draw resized image on canvas with high quality scaling
         ctx.drawImage(img, 0, 0, width, height);
+
 
 
         // Determine the best format based on original file type
@@ -63,8 +71,10 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
         const mimeType = isJPEG ? 'image/jpeg' : 'image/webp';
 
 
+
         // Compression quality - higher for JPEG to preserve quality, lower for WebP to reduce size
         const quality = isJPEG ? 0.8 : 0.7;
+
 
 
         // Convert canvas to base64 with optimized compression
@@ -76,8 +86,10 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
         const base64Data = base64.split(',')[1] || '';
 
 
+
         // Calculate compressed file size (approximation)
         const fileSize = Math.round((base64Data.length * 3) / 4);
+
 
 
         resolve({
@@ -94,10 +106,12 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
     };
 
 
+
     img.onerror = () => {
       URL.revokeObjectURL(img.src);
       reject(new Error('Không thể tải ảnh'));
     };
+
 
 
     // Start loading image
@@ -106,16 +120,18 @@ const processImageForUpload = (file: File): Promise<{ base64: string; mimeType: 
 };
 
 
+
 export default function DemoPage() {
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Add state for preview URL
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SkincareRoutine | null>(null);
- const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [analysisProgress, setAnalysisProgress] = useState(0);
   const [isDragActive, setIsDragActive] = useState(false);
+
 
 
   const onSubmit = async (e: any) => {
@@ -226,12 +242,14 @@ export default function DemoPage() {
   };
 
 
+
   const handleFileChange = (e: any) => {
     if (e.target.files && e.target.files[0]) {
       const selectedFile = e.target.files[0];
       validateAndSetFile(selectedFile);
     }
   };
+
 
 
   const validateAndSetFile = (selectedFile: File) => {
@@ -264,6 +282,7 @@ export default function DemoPage() {
   };
 
 
+
   const handleDrag = useCallback((e: any) => {
     e.preventDefault();
     e.stopPropagation();
@@ -273,6 +292,7 @@ export default function DemoPage() {
       setIsDragActive(false);
     }
   }, []);
+
 
 
   const handleDrop = useCallback((e: any) => {
@@ -303,6 +323,7 @@ export default function DemoPage() {
     }
 
 
+
     return () => {
       if (dropZone) {
         dropZone.removeEventListener('dragenter', handleDrag as any);
@@ -312,6 +333,7 @@ export default function DemoPage() {
       }
     };
   }, [handleDrag, handleDrop]);
+
 
 
   const resetForm = () => {
@@ -325,7 +347,7 @@ export default function DemoPage() {
     setError(null);
     setUploadProgress(0);
     setAnalysisProgress(0);
- };
+  };
  
   // Hàm hỗ trợ sao chép văn bản
   const fallbackCopyText = (text: string) => {
@@ -356,6 +378,7 @@ export default function DemoPage() {
   };
 
 
+
   // Cleanup URL object when component unmounts or file changes
   useEffect(() => {
     return () => {
@@ -374,9 +397,9 @@ export default function DemoPage() {
       <div className="flex justify-between items-center mb-8">
         <Link
           href="/"
-          className="border border-primary-600 text-primary-60 hover:bg-primary-50 font-medium py-2 px-4 rounded-lg transition duration-300 ease-in-out flex items-center"
+          className="border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium py-2 px-4 rounded-lg transition duration-300 ease-in-out flex items-center"
         >
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg">
+          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
           </svg>
           Trở về trang chủ
@@ -388,6 +411,7 @@ export default function DemoPage() {
           Tải lên ảnh khuôn mặt để nhận phân tích chuyên sâu và lộ trình chăm sóc da cá nhân hóa
         </p>
       </div>
+
 
 
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
@@ -454,6 +478,7 @@ export default function DemoPage() {
         </form>
 
 
+
         {file && !loading && !result && (
           <div className="mt-8">
             <div className="text-center mb-4">
@@ -488,6 +513,7 @@ export default function DemoPage() {
             </div>
           </div>
         )}
+
 
 
         {loading && (
@@ -563,6 +589,7 @@ export default function DemoPage() {
         )}
 
 
+
         {error && (
           <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start shadow-sm">
             <div className="flex-shrink-0">
@@ -586,6 +613,7 @@ export default function DemoPage() {
           </div>
         )}
       </div>
+
 
 
       {result && (

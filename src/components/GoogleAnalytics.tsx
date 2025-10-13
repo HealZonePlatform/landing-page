@@ -2,19 +2,12 @@
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
-const GoogleAnalytics = () => {
+// ✅ Tách phần tracking ra component riêng
+function GATracking() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  // If no Google Analytics ID is provided at build time, don't render
-  // any GA scripts. Without this guard the template strings below will
-  // expand `undefined` which leads to invalid script URLs and runtime
-  // errors on the deployed static site.
-  if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID) {
-    return null;
-  }
 
   useEffect(() => {
     const url = pathname + searchParams.toString();
@@ -27,6 +20,18 @@ const GoogleAnalytics = () => {
       });
     }
   }, [pathname, searchParams]);
+
+  return null;
+}
+
+const GoogleAnalytics = () => {
+  // If no Google Analytics ID is provided at build time, don't render
+  // any GA scripts. Without this guard the template strings below will
+  // expand `undefined` which leads to invalid script URLs and runtime
+  // errors on the deployed static site.
+  if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID) {
+    return null;
+  }
 
   return (
     <>
@@ -94,6 +99,11 @@ const GoogleAnalytics = () => {
           `,
         }}
       />
+      
+      {/* ✅ Wrap component tracking trong Suspense */}
+      <Suspense fallback={null}>
+        <GATracking />
+      </Suspense>
     </>
   );
 };
