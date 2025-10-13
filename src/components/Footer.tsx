@@ -91,8 +91,8 @@ export default function Footer() {
                 <svg className="h-5 w-5 mr-2 mt-0.5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:contact@horizon-skincare.com" className="hover:text-white transition-colors">
-                  contact@horizon-skincare.com
+                <a href="mailto:horizon.skincare.co@gmail.com" className="hover:text-white transition-colors">
+                  horizon.skincare.co@gmail.com
                 </a>
               </li>
               <li className="flex items-start">
