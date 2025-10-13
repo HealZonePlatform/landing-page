@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://healzoneplatform.github.io/ai-skincare-platform/sitemap.xml
+# Point search engines to the canonical sitemap on the custom domain.
+Sitemap: https://horizonskincare.online/sitemap.xml
