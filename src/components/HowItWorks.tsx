@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 const steps = [
   {
     title: "Tải Ảnh Lên",
-    description: "Chụp ảnh khuôn mặt rõ ràng với ánh sáng tốt để ghi lại tình trạng da chính xác.",
+    description: "Chụp hoặc tải ảnh khuôn mặt rõ ràng với ánh sáng tốt để ghi lại tình trạng da chính xác.",
     number: "01"
   },
   {
     title: "Phân Tích AI",
-    description: "Thuật toán AI tiên tiến của chúng tôi phân tích kết cấu da, tông màu, lỗ chân lông, nếp nhăn và nhiều hơn nữa.",
+    description: "Thuật toán AI tiên tiến của chúng tôi phân tích loại da, kết cấu da, tông màu, lỗ chân lông, nếp nhăn và từng chi tiết.",
     number: "02"
   },
   {
@@ -20,7 +20,7 @@ const steps = [
   },
   {
     title: "Kế Hoạch Cá Nhân",
-    description: "Nhận quy trình chăm sóc da được tùy chỉnh phù hợp với nhu cầu và mục tiêu cụ thể của bạn.",
+    description: "Nhận quy trình, hướng dẫn chi tiết từng bước cách chăm sóc da, sinh hoạt, ăn uống và đưa ra các lời khuyên cho người dùng.",
     number: "04"
   }
 ];

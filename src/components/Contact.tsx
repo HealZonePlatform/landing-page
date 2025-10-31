@@ -82,27 +82,26 @@ const Contact = () => {
     }
     
     setFormStatus('submitting');
-    
+
     try {
-      // Uncomment và thay YOUR_FORM_ID để sử dụng Formspree
-      // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      if (Math.random() > 0.2) {
-        setFormStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Submission failed');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.message || 'Có lỗi xảy ra khi gửi tin nhắn.');
       }
+
+      setFormStatus('success');
+      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Contact form submission failed:', error);
       setFormStatus('error');
     }
   };
@@ -169,7 +168,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900">Đội ngũ</h4>
-                      <p className="text-gray-600">Horizon Team - Huỳnh Nhựt Huy</p>
+                      <p className="text-gray-600">Horizon Team</p>
                     </div>
                   </div>
 

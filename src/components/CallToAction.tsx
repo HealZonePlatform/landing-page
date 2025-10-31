@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const CallToAction = () => {
   return (
-    <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+    <section id="call-to-action" className="section-padding bg-gradient-to-r from-primary-600 to-primary-700 text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 

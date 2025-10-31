@@ -99,14 +99,18 @@ export default function Footer() {
                 <svg className="h-5 w-5 mr-2 mt-0.5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
-                <span>Horizon Team - Huỳnh Nhựt Huy</span>
+                <a href="https://www.facebook.com/profile.php?id=61582062027737" className="hover:text-white transition-colors">
+                  HorizonTeam
+                </a>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 mr-2 mt-0.5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>FPT University, TP. Hồ Chí Minh</span>
+                <a href="https://maps.app.goo.gl/UtPk8JDx2XhqxAby8" className="hover:text-white transition-colors">
+                  FPT University, TP. Hồ Chí Minh
+                </a>
               </li>
             </ul>
           </div>

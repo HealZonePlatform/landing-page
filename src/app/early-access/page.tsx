@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { trackEarlyAccessSignup, trackFormSubmit, identifyUser } from '@/lib/analytics';
-import { handleEarlyAccessSignup } from '@/lib/emailService';
 
 export default function EarlyAccessPage() {
   const [email, setEmail] = useState('');
@@ -84,7 +83,7 @@ export default function EarlyAccessPage() {
       // Track form submission attempt
       trackFormSubmit('early_access', false); // Track as attempt first
       
-      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || 'https://formspree.io/f/YOUR_FORM_ID', {
+      const response = await fetch('/api/early-access', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,31 +91,26 @@ export default function EarlyAccessPage() {
         body: JSON.stringify({ name, email }),
       });
 
-      if (response.ok) {
-        // Successfully submitted - track success
-        trackFormSubmit('early_access', true);
-        trackEarlyAccessSignup(email);
-        identifyUser(email, { name, signupType: 'early_access' });
-        
-        // Send email notifications
-        const emailResult = await handleEarlyAccessSignup(email, name);
-        if (!emailResult.success) {
-          console.error('Email notification error:', emailResult.message);
-        }
-        
-        setIsSubmitted(true);
-        setEmail('');
-        setName('');
-      } else {
-        // Handle error response
-        console.error('Formspree submission failed:', await response.text());
-        trackFormSubmit('early_access', false);
-        alert('There was an error submitting your request. Please try again.');
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.message || 'Có lỗi xảy ra khi gửi yêu cầu truy cập sớm.');
       }
+
+      // Successfully submitted - track success
+      trackFormSubmit('early_access', true);
+      trackEarlyAccessSignup(email);
+      identifyUser(email, { name, signupType: 'early_access' });
+
+      setIsSubmitted(true);
+      setEmail('');
+      setName('');
     } catch (error) {
       console.error('Error submitting early access request:', error);
       trackFormSubmit('early_access', false);
-      alert('There was an error submitting your request. Please try again.');
+      const message =
+        error instanceof Error ? error.message : 'Có lỗi xảy ra khi gửi yêu cầu truy cập sớm.';
+      alert(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -307,9 +301,10 @@ export default function EarlyAccessPage() {
             </div>
             
             <div className="bg-white rounded-xl shadow-md p-6 inline-block">
+              <div className="text-2xl font-bold text-primary-600">Mục tiêu</div>
               <div className="flex space-x-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary-600">10,000+</div>
+                  <div className="text-2xl font-bold text-primary-600">5,000+</div>
                   <div className="text-sm text-gray-600">Người dùng hài lòng</div>
                 </div>
                 <div className="text-center">
@@ -317,7 +312,7 @@ export default function EarlyAccessPage() {
                   <div className="text-sm text-gray-600">Độ chính xác</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary-600">30 giây</div>
+                  <div className="text-2xl font-bold text-primary-600">9 giây</div>
                   <div className="text-sm text-gray-600">Thời gian phân tích</div>
                 </div>
               </div>
@@ -337,7 +332,7 @@ export default function EarlyAccessPage() {
                   <svg className="w-4 h-4 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  <span className="text-gray-700">Huỳnh Nhựt Huy - Team Leader</span>
+                  <span className="text-gray-700">CSKH - HorizonTeam</span>
                 </div>
                 <div className="flex items-center">
                   <svg className="w-4 h-4 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

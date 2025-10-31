@@ -132,7 +132,7 @@ export const hotjarInitialize = (hjid: number, hjsv: number) => {
       const r = o.createElement('script'); r.async = 1;
       r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
       a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', process.env.NEXT_PUBLIC_HOTJAR_ID);
   }
 };
 
@@ -150,7 +150,7 @@ export const clarityInitialize = (projectId: string) => {
       a = l.getElementsByTagName('head')[0];
       r = l.createElement('script'); r.async = 1; r.src = 'https://www.clarity.ms/tag/' + i;
       a.appendChild(r);
-    })(window, document, 'clarity', 'script', projectId);
+    })(window, document, 'clarity', 'script', process.env.NEXT_PUBLIC_CLARITY_ID);
   }
 };
 

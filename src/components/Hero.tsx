@@ -35,7 +35,7 @@ export default function Hero() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a
-                  href="#features"
+                  href="#call-to-action"
                   className="btn btn-primary text-lg px-8 py-4"
                 >
                   Bắt Đầu Miễn Phí
@@ -47,11 +47,13 @@ export default function Hero() {
                   Tìm Hiểu Thêm
                 </a>
               </div>
-
+              <div className="mt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"> </div>
+                <div className="text-left text-2xl font-bold text-primary-600">Mục tiêu</div>
               {/* Stats */}
-              <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center lg:justify-start">
+              <div className="mt-4 flex flex-col sm:flex-row gap-8 justify-center lg:justify-start">
+                {/* <div className="text-left text-2xl font-bold text-primary-600">Mục tiêu</div> */}
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary-600">10,000+</div>
+                  <div className="text-2xl font-bold text-primary-600">5,000+</div>
                   <div className="text-sm text-gray-600">Người Dùng Hài Lòng</div>
                 </div>
                 <div className="text-center">
@@ -59,7 +61,7 @@ export default function Hero() {
                   <div className="text-sm text-gray-600">Độ Chính Xác</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary-600">30 Giây</div>
+                  <div className="text-2xl font-bold text-primary-600">9 Giây</div>
                   <div className="text-sm text-gray-600">Thời Gian Phân Tích</div>
                 </div>
               </div>

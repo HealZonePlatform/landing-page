@@ -7,6 +7,43 @@ import { Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
+// src/app/layout.tsx
+import Script from 'next/script';
+// ...
+
+// .online
+
+{/* <head>
+  <StructuredData />
+  <Script
+    id="cookiebot"
+    strategy="beforeInteractive"
+    src="https://consent.cookiebot.com/uc.js"
+    data-cbid="b392c331-ece3-4272-a8a6-d784bd82cde3"
+    data-blockingmode="auto"
+  />
+</head> */}
+
+// .ngrok
+// The raw <head> block with <script> tags was removed because JSX/TSX files cannot contain literal HTML <head> sections
+// outside of a component; the unescaped `{}` in the script caused the "Unexpected token" compile error.
+// To include these scripts correctly, add them inside the RootLayout head using next/script, for example:
+//
+<head>
+  <Script
+    id="iubenda-config"
+    strategy="beforeInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `var _iub = _iub || []; _iub.csConfiguration = {"siteId":4300417,"cookiePolicyId":88998866,"lang":"en","storage":{"useSiteId":true}};`,
+    }}
+  />
+  <Script src="https://cs.iubenda.com/autoblocking/4300417.js" strategy="beforeInteractive" />
+  <Script src="//cdn.iubenda.com/cs/gpp/stub.js" strategy="beforeInteractive" />
+  <Script src="//cdn.iubenda.com/cs/iubenda_cs.js" strategy="beforeInteractive" />
+</head>
+//
+// Add the above Script elements inside the <head> of the RootLayout component to restore functionality.
+
 /**
  * Global metadata configuration for the Horizon Skincare landing page.
  *
