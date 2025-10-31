@@ -395,7 +395,7 @@ export default function DemoPage() {
 
 
 
-      <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+      <div className="bg-brand-cream rounded-2xl shadow-xl p-8 mb-8">
         <form onSubmit={onSubmit} className="space-y-6">
           <div className="text-center">
             <label className="block text-lg font-medium text-gray-800 mb-4">

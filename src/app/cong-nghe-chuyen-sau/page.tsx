@@ -83,7 +83,7 @@ const CongNgheChuyenSauPage = () => {
             {advancedTechnologies.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="bg-brand-cream border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}

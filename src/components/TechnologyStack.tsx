@@ -20,17 +20,17 @@ const technologies: Technology[] = [
   {
     name: 'Bộ câu hỏi đời thường',
     description: 'Các câu hỏi về giấc ngủ, uống nước và môi trường sống giúp healzone hiểu bạn như người thân.',
-    icon: <MessageCircleQuestion className="h-12 w-12 text-secondary-600" strokeWidth={1.5} />,
+    icon: <MessageCircleQuestion className="h-12 w-12 text-primary-600" strokeWidth={1.5} />,
   },
   {
     name: 'Báo cáo dễ đọc',
     description: 'Biểu đồ và chú thích rõ ràng, diễn giải tình trạng da bằng ngôn ngữ gần gũi thay vì thuật ngữ khó hiểu.',
-    icon: <FileText className="h-12 w-12 text-indigo-500" strokeWidth={1.5} />,
+    icon: <FileText className="h-12 w-12 text-primary-500" strokeWidth={1.5} />,
   },
   {
     name: 'Hướng dẫn từng bước',
     description: 'Checklist tự đánh dấu giúp bạn biết rõ đã làm đến đâu, không quên bất kỳ bước chăm da nào.',
-    icon: <ListChecks className="h-12 w-12 text-emerald-500" strokeWidth={1.5} />,
+    icon: <ListChecks className="h-12 w-12 text-primary-500" strokeWidth={1.5} />,
   },
   {
     name: 'Nhắc lịch linh hoạt',
@@ -46,7 +46,7 @@ const technologies: Technology[] = [
 
 const TechnologyStack = () => {
   return (
-    <section id="technology" className="section-padding bg-white">
+    <section id="technology" className="section-padding bg-brand-cream">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2
@@ -89,7 +89,7 @@ const TechnologyStack = () => {
         <div className="mt-12 text-center">
           <Link
             href="/cong-nghe-chuyen-sau"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-primary-700"
+            className="btn-primary"
           >
             Xem thêm
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

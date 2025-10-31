@@ -81,10 +81,10 @@ export async function POST(request: Request) {
         ].join('\n'),
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #d7842c;">Chào mừng bạn đến với ${productName}!</h2>
+            <h2 style="color: #e19233;">Chào mừng bạn đến với ${productName}!</h2>
             <p>Xin chào ${safeName},</p>
             <p>Cảm ơn bạn đã đăng ký truy cập sớm. Đội ngũ ${productName} đang hoàn thiện những bước cuối cùng để bạn có thể trải nghiệm nền tảng chăm da thông minh.</p>
-            <p>Chúng tôi sẽ ưu tiên gửi lời mời dùng thử cho bạn ngay khi sẵn sàng. Trong lúc chờ đợi, bạn có thể khám phá thêm tại <a href="${landingUrl}" style="color: #d7842c;">trang giới thiệu của ${productName}</a>.</p>
+            <p>Chúng tôi sẽ ưu tiên gửi lời mời dùng thử cho bạn ngay khi sẵn sàng. Trong lúc chờ đợi, bạn có thể khám phá thêm tại <a href="${landingUrl}" style="color: #e19233;">trang giới thiệu của ${productName}</a>.</p>
             <p>Thân mến,<br/>Đội ngũ ${productName}</p>
           </div>
         `,
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
             text: `Người dùng mới đăng ký truy cập sớm:\n- Tên: ${name || 'Chưa cung cấp'}\n- Email: ${email}\n- Thời gian: ${timestamp}`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                <h3 style="color: #d7842c;">Đăng ký truy cập sớm mới</h3>
+                <h3 style="color: #e19233;">Đăng ký truy cập sớm mới</h3>
                 <ul>
                   <li><strong>Tên:</strong> ${name ? escapeHtml(name) : 'Chưa cung cấp'}</li>
                   <li><strong>Email:</strong> ${email}</li>

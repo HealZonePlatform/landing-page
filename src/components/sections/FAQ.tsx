@@ -76,7 +76,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-brand-cream">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Câu Hỏi Thường Gặp</h2>
@@ -155,7 +155,7 @@ const FAQSection = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="p-6 pt-2 text-gray-600 bg-white">
+                      <div className="p-6 pt-2 text-gray-600 bg-brand-cream">
                         {faq.answer}
                       </div>
                     </motion.div>

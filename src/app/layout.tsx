@@ -1,11 +1,25 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
+import { Unbounded } from 'next/font/google';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import StructuredData from '@/components/StructuredData';
 import { Suspense } from 'react';
 
-const inter = Inter({ subsets: ['latin'] });
+const brasikaDisplay = localFont({
+  src: '../../public/fonts/brasika/DFVNBrasikaDisplay/OpenType-PS/DFVN Brasika Display.otf',
+  variable: '--font-headline',
+  display: 'swap',
+  weight: '400',
+  style: 'normal',
+});
+
+const unbounded = Unbounded({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+});
 
 // src/app/layout.tsx
 import Script from 'next/script';
@@ -114,6 +128,11 @@ export const metadata: Metadata = {
   verification: {
     google: 'google-site-verification-code',
   },
+  icons: {
+    icon: '/picture/logo.png',
+    shortcut: '/picture/logo.png',
+    apple: '/picture/logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -122,12 +141,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={inter.className}>
+    <html lang="vi" className={`${unbounded.variable} ${brasikaDisplay.variable}`}>
       <head>
         {/* Structured data improves SEO and helps search engines understand your site. */}
         <StructuredData />
       </head>
-      <body>
+      <body className="bg-brand-background text-brand-ink">
         {/* Global site tag for Google Analytics, injected only when the
             corresponding environment variable is provided. */}
         <GoogleAnalytics />

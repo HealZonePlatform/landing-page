@@ -67,7 +67,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="section-padding bg-white">
+    <section id="testimonials" className="section-padding bg-brand-cream">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2 

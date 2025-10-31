@@ -91,11 +91,11 @@ export async function POST(request: Request) {
         ].join('\n'),
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #d7842c;">${productName} đã nhận được tin nhắn của bạn</h2>
+            <h2 style="color: #e19233;">${productName} đã nhận được tin nhắn của bạn</h2>
             <p>Xin chào ${sanitizedName},</p>
             <p>Cảm ơn bạn đã chia sẻ. Đội ngũ ${productName} sẽ phản hồi trong thời gian sớm nhất.</p>
             <p><strong>Nội dung bạn gửi:</strong></p>
-            <blockquote style="background: #f5f5f5; padding: 12px 16px; border-radius: 8px; color: #333;">
+            <blockquote style="background: #ffefce; padding: 12px 16px; border-radius: 8px; color: #121212;">
               ${sanitizedMessage.replace(/\n/g, '<br/>')}
             </blockquote>
             <p>Thân mến,<br/>Đội ngũ ${productName}</p>
@@ -112,14 +112,14 @@ export async function POST(request: Request) {
           text: `Tin nhắn mới:\n- Tên: ${name}\n- Email: ${email}\n- Thời gian: ${timestamp}\n- Nội dung: ${message}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h3 style="color: #d7842c;">Tin nhắn mới từ khách hàng</h3>
+              <h3 style="color: #e19233;">Tin nhắn mới từ khách hàng</h3>
               <ul>
                 <li><strong>Tên:</strong> ${sanitizedName}</li>
                 <li><strong>Email:</strong> ${email}</li>
                 <li><strong>Thời gian:</strong> ${timestamp}</li>
               </ul>
               <p><strong>Nội dung:</strong></p>
-              <blockquote style="background: #f5f5f5; padding: 12px 16px; border-radius: 8px; color: #333;">
+              <blockquote style="background: #ffefce; padding: 12px 16px; border-radius: 8px; color: #121212;">
                 ${sanitizedMessage.replace(/\n/g, '<br/>')}
               </blockquote>
             </div>

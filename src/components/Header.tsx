@@ -17,9 +17,9 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-white shadow-sm">
+    <header className="fixed w-full top-0 z-50 bg-brand-background/90 backdrop-blur shadow-sm">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-primary-600">
+        <Link href="/" className="text-2xl font-heading font-bold text-brand-ink">
           AI Skincare
         </Link>
 
@@ -35,10 +35,7 @@ export default function Header() {
             </a>
           ))}
           {/* ✅ THAY ĐỔI NÀY: Link đến /early-access */}
-          <Link
-            href="/early-access"
-            className="btn-primary bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg transition-colors"
-          >
+          <Link href="/early-access" className="btn-primary">
             Tải ứng dụng
           </Link>
         </div>
@@ -73,9 +70,9 @@ export default function Header() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-brand-cream px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-primary-600">
+            <Link href="/" className="text-2xl font-heading font-bold text-brand-ink">
               AI Skincare
             </Link>
             <button
@@ -117,7 +114,7 @@ export default function Header() {
                 {/* ✅ THAY ĐỔI NÀY: Link đến /early-access */}
                 <Link
                   href="/early-access"
-                  className="btn-primary bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg inline-block text-center w-full"
+                  className="btn-primary w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Tải ứng dụng

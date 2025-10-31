@@ -107,7 +107,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-white">
+    <section id="contact" className="section-padding bg-brand-cream">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -131,57 +131,57 @@ const Contact = () => {
             </motion.p>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl shadow-lg p-8">
+          <div className="rounded-3xl bg-brand-cream/90 p-10 shadow-xl border border-brand-taupe/30 backdrop-blur-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Thông tin liên hệ</h3>
-                <div className="space-y-6">
+              <div className="rounded-2xl bg-brand-taupe/10 p-6">
+                <h3 className="text-2xl font-heading font-bold text-brand-ink mb-6">Thông tin liên hệ</h3>
+                <div className="space-y-6 text-brand-ink/90">
                   <div className="flex items-start">
-                    <div className="bg-primary-100 p-3 rounded-lg mr-4">
+                    <div className="mr-4 rounded-lg bg-primary-600/10 p-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Điện thoại</h4>
-                      <p className="text-gray-600">0365265739</p>
+                      <h4 className="font-heading text-lg font-semibold text-brand-ink">Điện thoại</h4>
+                      <p className="text-brand-forest/80">0365265739</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="bg-primary-100 p-3 rounded-lg mr-4">
+                    <div className="mr-4 rounded-lg bg-primary-600/10 p-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 0-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Email</h4>
-                      <p className="text-gray-600">contact@horizon-skincare.com</p>
+                      <h4 className="font-heading text-lg font-semibold text-brand-ink">Email</h4>
+                      <p className="text-brand-forest/80">contact@horizon-skincare.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="bg-primary-100 p-3 rounded-lg mr-4">
+                    <div className="mr-4 rounded-lg bg-primary-600/10 p-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Đội ngũ</h4>
-                      <p className="text-gray-600">Horizon Team</p>
+                      <h4 className="font-heading text-lg font-semibold text-brand-ink">Đội ngũ</h4>
+                      <p className="text-brand-forest/80">Horizon Team</p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <div className="bg-primary-100 p-3 rounded-lg mr-4">
+                    <div className="mr-4 rounded-lg bg-primary-600/10 p-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Văn phòng</h4>
-                      <p className="text-gray-600">FPT University, Thành phố Hồ Chí Minh</p>
+                      <h4 className="font-heading text-lg font-semibold text-brand-ink">Văn phòng</h4>
+                      <p className="text-brand-forest/80">FPT University, Thành phố Hồ Chí Minh</p>
                     </div>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ const Contact = () => {
               <div>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-6">
-                    <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Họ và tên</label>
+                    <label htmlFor="name" className="block font-heading text-brand-ink mb-2">Họ và tên</label>
                     <input
                       type="text"
                       id="name"
@@ -199,8 +199,8 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                        errors.name ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-forest/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
+                        errors.name ? 'border-red-500' : 'border-brand-taupe/40'
                       }`}
                       placeholder="Nguyễn Văn A"
                     />
@@ -208,7 +208,7 @@ const Contact = () => {
                   </div>
                   
                   <div className="mb-6">
-                    <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Địa chỉ Email</label>
+                    <label htmlFor="email" className="block font-heading text-brand-ink mb-2">Địa chỉ Email</label>
                     <input
                       type="email"
                       id="email"
@@ -217,8 +217,8 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-forest/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
+                        errors.email ? 'border-red-500' : 'border-brand-taupe/40'
                       }`}
                       placeholder="email@example.com"
                     />
@@ -226,7 +226,7 @@ const Contact = () => {
                   </div>
                   
                   <div className="mb-6">
-                    <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Tin nhắn</label>
+                    <label htmlFor="message" className="block font-heading text-brand-ink mb-2">Tin nhắn</label>
                     <textarea
                       id="message"
                       name="message"
@@ -235,8 +235,8 @@ const Contact = () => {
                       onBlur={handleBlur}
                       required
                       rows={4}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                        errors.message ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-forest/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
+                        errors.message ? 'border-red-500' : 'border-brand-taupe/40'
                       }`}
                       placeholder="Chúng tôi có thể giúp gì cho bạn?"
                     ></textarea>

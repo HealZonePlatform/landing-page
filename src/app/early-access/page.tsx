@@ -117,11 +117,11 @@ export default function EarlyAccessPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-200">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-32 w-80 h-80 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-secondary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
       </div>
 
       <div className="relative container mx-auto px-4 py-12">
@@ -141,7 +141,7 @@ export default function EarlyAccessPage() {
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-[70vh] py-12">
           {/* Left content - Form */}
           <motion.div 
-            className="w-full lg:w-1/2 bg-white rounded-2xl shadow-xl p-8 mb-12 lg:mb-0 lg:mr-8"
+            className="w-full lg:w-1/2 bg-brand-cream rounded-2xl shadow-xl p-8 mb-12 lg:mb-0 lg:mr-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -169,7 +169,7 @@ export default function EarlyAccessPage() {
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out"
+                  className="btn-primary"
                 >
                   Gửi yêu cầu khác
                 </button>
@@ -218,9 +218,7 @@ export default function EarlyAccessPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out ${
-                      isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-                    }`}
+                    className={`btn-primary w-full ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">
@@ -300,7 +298,7 @@ export default function EarlyAccessPage() {
               </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-md p-6 inline-block">
+            <div className="bg-brand-cream rounded-xl shadow-md p-6 inline-block">
               <div className="text-2xl font-bold text-primary-600">Mục tiêu</div>
               <div className="flex space-x-6">
                 <div className="text-center">
@@ -319,7 +317,7 @@ export default function EarlyAccessPage() {
             </div>
 
             {/* Contact Info */}
-            <div className="mt-8 bg-gradient-to-r from-primary-50 to-pink-50 rounded-xl p-6">
+            <div className="mt-8 bg-gradient-to-r from-primary-50 to-secondary-200 rounded-xl p-6">
               <h3 className="font-bold text-gray-900 mb-4">Liên hệ với Horizon Team:</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center">

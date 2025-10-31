@@ -8,52 +8,118 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        /**
-         * Custom brand palette inspired by the Figma mobile designs.
-         *
-         * primary – warm orange used for primary call‑to‑action buttons and highlights.
-         * secondary – muted brown/taupe tones for backgrounds and secondary elements.
-         * neutral – light cream tones for backgrounds and gradients.
-         * darkmode – deep purples for potential dark‑mode components or contrast blocks.
-         * olive – rich olive green for icons and subtle accents.
-         */
+        brand: {
+          background: '#c6cbcd',
+          accent: '#e19233',
+          ink: '#121212',
+          forest: '#60623d',
+          cream: '#ffefce',
+          taupe: '#a68e74',
+        },
         primary: {
-          50:  '#FFF7D3', // very light cream
-          100: '#FCEED2',
-          200: '#F7D9A3',
-          300: '#F0C583',
-          400: '#E8AB5C',
-          500: '#E69534', // main accent orange
-          600: '#D7842C',
-          700: '#B36922',
-          800: '#94571B',
-          900: '#7A4716'
+          50: '#ffefce',
+          100: '#ffefce',
+          200: '#c6cbcd',
+          300: '#c6cbcd',
+          400: '#e19233',
+          500: '#e19233',
+          600: '#e19233',
+          700: '#60623d',
+          800: '#60623d',
+          900: '#121212',
         },
         secondary: {
-          50:  '#F5E8C3', // very light beige
-          100: '#E9D8BB',
-          200: '#CBB79A',
-          300: '#B79D7F',
-          400: '#977E64',
-          500: '#A78B6D', // main taupe
-          600: '#8F755C',
-          700: '#705C47',
-          800: '#554037',
-          900: '#4A372E'
+          50: '#c6cbcd',
+          100: '#c6cbcd',
+          200: '#ffefce',
+          300: '#ffefce',
+          400: '#a68e74',
+          500: '#a68e74',
+          600: '#60623d',
+          700: '#60623d',
+          800: '#121212',
+          900: '#121212',
+        },
+        gray: {
+          50: '#ffefce',
+          100: '#ffefce',
+          200: '#ffefce',
+          300: '#c6cbcd',
+          400: '#c6cbcd',
+          500: '#a68e74',
+          600: '#a68e74',
+          700: '#60623d',
+          800: '#121212',
+          900: '#121212',
         },
         neutral: {
-          50:  '#FFF7D3',
-          100: '#F5E8C3',
-          200: '#EADABA'
+          200: '#ffefce',
+          300: '#c6cbcd',
+          400: '#a68e74',
         },
-        darkmode: {
-          500: '#44186C',
-          600: '#652D8F',
-          700: '#552A78'
+        pink: {
+          50: '#ffefce',
+          100: '#ffefce',
+          200: '#c6cbcd',
         },
-        olive: {
-          500: '#5B6239'
-        }
+        amber: {
+          500: '#e19233',
+        },
+        blue: {
+          600: '#60623d',
+          700: '#121212',
+        },
+        cyan: {
+          500: '#c6cbcd',
+        },
+        emerald: {
+          500: '#60623d',
+        },
+        green: {
+          100: '#ffefce',
+          500: '#60623d',
+          600: '#60623d',
+          700: '#60623d',
+          800: '#121212',
+        },
+        indigo: {
+          500: '#60623d',
+        },
+        purple: {
+          600: '#a68e74',
+          700: '#60623d',
+        },
+        red: {
+          50: '#ffefce',
+          100: '#ffefce',
+          200: '#c6cbcd',
+          300: '#c6cbcd',
+          500: '#e19233',
+          600: '#e19233',
+          700: '#60623d',
+        },
+        rose: {
+          500: '#e19233',
+        },
+        sky: {
+          500: '#c6cbcd',
+        },
+        slate: {
+          700: '#60623d',
+          800: '#121212',
+        },
+        yellow: {
+          400: '#ffefce',
+          500: '#e19233',
+          600: '#e19233',
+          700: '#60623d',
+        },
+        white: '#ffefce',
+        black: '#121212',
+      },
+      fontFamily: {
+        sans: ['var(--font-body)', 'sans-serif'],
+        heading: ['var(--font-headline)', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

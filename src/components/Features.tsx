@@ -61,7 +61,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section id="features" className="section-padding bg-white">
+    <section id="features" className="section-padding bg-brand-cream">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2 
@@ -88,7 +88,7 @@ const Features = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
+              className="bg-brand-cream p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
