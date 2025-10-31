@@ -129,9 +129,9 @@ export const metadata: Metadata = {
     google: 'google-site-verification-code',
   },
   icons: {
-    icon: '/picture/logo.png',
-    shortcut: '/picture/logo.png',
-    apple: '/picture/logo.png',
+    icon: '/picture/Iconlogo.png',
+    shortcut: '/picture/Iconlogo.png',
+    apple: '/picture/Iconlogo.png',
   },
 };
 

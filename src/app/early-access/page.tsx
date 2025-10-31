@@ -147,7 +147,7 @@ export default function EarlyAccessPage() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-3.9xl font-bold text-gray-900 mb-4 leading-snug">
                 Tải ứng dụng chăm sóc da AI của chúng tôi
               </h1>
               <p className="text-gray-600">
