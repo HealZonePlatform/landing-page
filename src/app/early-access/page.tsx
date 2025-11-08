@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { trackEarlyAccessSignup, trackFormSubmit, identifyUser } from '@/lib/analytics';
 
 export default function EarlyAccessPage() {
@@ -127,8 +128,20 @@ export default function EarlyAccessPage() {
       <div className="relative container mx-auto px-4 py-12">
         {/* Header */}
         <header className="flex justify-between items-center py-6">
-          <Link href="/" className="text-2xl font-bold text-primary-600">
-            AI Skincare
+          <Link
+            href="/"
+            className="flex items-center -ml-4 focus:outline-none focus-visible:outline-none"
+            aria-label="Về trang chủ HealZone"
+          >
+            <div className="relative h-14 w-56">
+              <Image
+                src="/picture/logo.png"
+                alt="HealZone logotype"
+                fill
+                sizes="224px"
+                className="object-contain"
+              />
+            </div>
           </Link>
           <Link
             href="/"

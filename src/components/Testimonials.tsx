@@ -94,7 +94,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              className="bg-gray-50 p-6 rounded-xl shadow-sm h-full flex flex-col"
+              className="bg-white/95 p-6 rounded-2xl shadow-lg border border-brand-taupe/40 h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -119,7 +119,7 @@ const Testimonials = () => {
                   </span>
                 )}
               </div>
-              <p className="text-gray-600 mb-6 italic flex-grow">"{testimonial.content}"</p>
+              <p className="text-brand-forest mb-6 italic flex-grow">"{testimonial.content}"</p>
               <div className="mt-auto">
                 <div className="flex items-center mb-3">
                   <img 

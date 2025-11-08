@@ -1,20 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-import { Unbounded } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import StructuredData from '@/components/StructuredData';
 import { Suspense } from 'react';
 
-const brasikaDisplay = localFont({
-  src: '../../public/fonts/brasika/DFVNBrasikaDisplay/OpenType-PS/DFVN Brasika Display.otf',
-  variable: '--font-headline',
-  display: 'swap',
-  weight: '400',
-  style: 'normal',
-});
-
-const unbounded = Unbounded({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-body',
@@ -141,7 +132,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={`${unbounded.variable} ${brasikaDisplay.variable}`}>
+    <html lang="vi" className={inter.variable}>
       <head>
         {/* Structured data improves SEO and helps search engines understand your site. */}
         <StructuredData />

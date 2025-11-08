@@ -73,7 +73,7 @@ const TechnologyStack = () => {
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.name}
-              className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
+              className="bg-white/95 p-6 rounded-2xl shadow-lg border border-brand-taupe/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

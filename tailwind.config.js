@@ -118,8 +118,8 @@ module.exports = {
         black: '#121212',
       },
       fontFamily: {
-        sans: ['var(--font-body)', 'sans-serif'],
-        heading: ['var(--font-headline)', 'serif'],
+        sans: ['var(--font-body)', 'Inter', 'sans-serif'],
+        heading: ['var(--font-body)', 'Inter', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
