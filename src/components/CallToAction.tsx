@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const CallToAction = () => {
   return (
-    <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+    <section id="call-to-action" className="section-padding bg-gradient-to-r from-primary-600 to-primary-700 text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 
@@ -46,14 +46,12 @@ const CallToAction = () => {
             </Link>
             <Link
               href="/early-access"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold hover:from-primary-700 hover:to-primary-800 transform transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="btn-primary"
             >
-              <div className="flex items-center justify-center space-x-2">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20">
-                  <path d="M3 4a1 1 0 011-1h12a1 1 0 01 1v2a1 1 0 01-1 1H4a1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 0-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 0-1-1h-2z" />
-                </svg>
-                <span>Tải ứng dụng ngay</span>
-              </div>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1zm11-1a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1z" />
+              </svg>
+              <span>Tải ứng dụng ngay</span>
             </Link>
           </motion.div>
         </div>

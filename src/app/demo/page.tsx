@@ -125,6 +125,7 @@ export default function DemoPage() {
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Add state for preview URL
+  const [previewDataUrl, setPreviewDataUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SkincareRoutine | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -168,6 +169,8 @@ export default function DemoPage() {
       }, 50);
       
       const processedImage = await processImageForUpload(file);
+      const dataUrl = `data:${processedImage.mimeType};base64,${processedImage.base64}`;
+      setPreviewDataUrl(dataUrl);
       
       if (processingInterval) {
         clearInterval(processingInterval);
@@ -219,7 +222,8 @@ export default function DemoPage() {
       if (file && previewUrl) {
         const resultWithImage = {
           ...data,
-          imageUrl: previewUrl
+          imageUrl: previewUrl,
+          imageDataUrl: dataUrl
         } as SkincareRoutine;
         setResult(resultWithImage);
       } else {
@@ -272,6 +276,9 @@ export default function DemoPage() {
     // Revoke previous preview URL if exists
     if (previewUrl) {
       URL.revokeObjectURL(previewUrl);
+    }
+    if (previewDataUrl) {
+      setPreviewDataUrl(null);
     }
     
     // Create new preview URL
@@ -342,6 +349,7 @@ export default function DemoPage() {
       URL.revokeObjectURL(previewUrl);
       setPreviewUrl(null);
     }
+    setPreviewDataUrl(null);
     setFile(null);
     setResult(null);
     setError(null);
@@ -350,32 +358,6 @@ export default function DemoPage() {
   };
  
   // Hàm hỗ trợ sao chép văn bản
-  const fallbackCopyText = (text: string) => {
-    if (navigator && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-      navigator.clipboard.writeText(text)
-        .then(() => alert('Đã sao chép liên kết vào clipboard!'))
-        .catch(err => console.error('Error copying:', err));
-    } else {
-      // Fallback cuối cùng nếu không hỗ trợ clipboard API
-      try {
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        const successful = document.execCommand('copy');
-        document.body.removeChild(textArea);
-        if (successful) {
-          alert('Đã sao chép liên kết vào clipboard!');
-        } else {
-          alert('Không thể sao chép liên kết. Vui lòng sao chép thủ công.');
-        }
-      } catch (err) {
-        console.error('Fallback copy failed:', err);
-        alert('Không thể sao chép liên kết. Vui lòng sao chép thủ công.');
-      }
-    }
-  };
 
 
 
@@ -414,7 +396,7 @@ export default function DemoPage() {
 
 
 
-      <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+      <div className="bg-brand-cream rounded-2xl shadow-xl p-8 mb-8">
         <form onSubmit={onSubmit} className="space-y-6">
           <div className="text-center">
             <label className="block text-lg font-medium text-gray-800 mb-4">
@@ -484,11 +466,11 @@ export default function DemoPage() {
             <div className="text-center mb-4">
               <h3 className="text-lg font-medium text-gray-800">Ảnh đã chọn</h3>
             </div>
-            <div className="relative mx-auto block border-4 border-white rounded-xl shadow-lg overflow-hidden max-w-xs md:max-w-md bg-gray-100">
+            <div className="relative mx-auto flex w-full max-w-sm md:max-w-lg items-center justify-center border-4 border-white rounded-xl shadow-lg overflow-hidden bg-gray-100">
               <img
                 src={previewUrl || ''}
                 alt="Preview"
-                className="max-w-full h-auto rounded-lg object-contain max-h-80"
+                className="w-full h-auto rounded-lg object-contain max-h-80"
                 style={{ minHeight: '200px' }}
                 onError={(e) => {
                   console.error('Error loading image preview');
@@ -527,11 +509,11 @@ export default function DemoPage() {
             
             <div className="max-w-md mx-auto">
               {/* Preview ảnh trong trạng thái loading */}
-              <div className="relative mx-auto block border-4 border-white rounded-xl shadow-lg overflow-hidden max-w-xs md:max-w-md bg-gray-100 mb-6">
+              <div className="relative mx-auto flex w-full max-w-sm md:max-w-lg items-center justify-center border-4 border-white rounded-xl shadow-lg overflow-hidden bg-gray-100 mb-6">
                 <img
                   src={previewUrl || ''}
                   alt="Preview"
-                  className="max-w-full h-auto rounded-lg object-contain max-h-80 opacity-60"
+                  className="w-full h-auto rounded-lg object-contain max-h-80 opacity-60"
                   style={{ minHeight: '200px' }}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -616,86 +598,30 @@ export default function DemoPage() {
 
 
 
-      {result && (
-        <div className="mt-8 bg-gray-50 rounded-2xl p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-800">Kết quả phân tích da</h2>
-            <div className="flex space-x-3">
-              <button
-                onClick={() => {
-                  // Save result to local storage
-                  localStorage.setItem('skincareResult', JSON.stringify(result));
-                  alert('Kết quả đã được lưu cục bộ!');
-                }}
-                className="px-4 py-2 rounded-lg bg-blue-100 text-blue-700 font-medium hover:bg-blue-200 transition-colors flex items-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3-3m0 0l-3 3m3-3v12"></path>
-                </svg>
-                Lưu kết quả
-              </button>
-              <button
-                onClick={() => {
-                  // Share result via Web Share API
-                  const shareData = {
-                    title: 'Phân tích da thông minh',
-                    text: 'Kết quả phân tích da của tôi',
-                    url: window.location.href,
-                  };
-                  
-                  // Kiểm tra trình duyệt có hỗ trợ Web Share API không
-                  if (navigator && navigator.share && typeof navigator.share === 'function') {
-                    // Kiểm tra xem có phải là HTTPS hay localhost không (yêu cầu của Web Share API)
-                    if (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-                      navigator.share(shareData)
-                        .catch(err => console.error('Error sharing:', err));
-                    } else {
-                      // Nếu không phải HTTPS và không phải localhost, sử dụng clipboard
-                      fallbackCopyText(window.location.href);
-                    }
-                  } else {
-                    // Fallback: Copy to clipboard
-                    fallbackCopyText(window.location.href);
-                  }
-                }}
-                className="px-4 py-2 rounded-lg bg-green-100 text-green-700 font-medium hover:bg-green-200 transition-colors flex items-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
-                </svg>
-                Chia sẻ
-              </button>
-              <button
-                onClick={() => window.print()}
-                className="px-4 py-2 rounded-lg bg-purple-100 text-purple-700 font-medium hover:bg-purple-200 transition-colors flex items-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-                </svg>
-                In kết quả
-              </button>
-              <button
-                onClick={() => {
-                  // Tạo gợi ý sản phẩm dựa trên kết quả phân tích
-                  alert('Chức năng gợi ý sản phẩm đang được phát triển. Sẽ sớm ra mắt!');
-                }}
-                className="px-4 py-2 rounded-lg bg-yellow-100 text-yellow-700 font-medium hover:bg-yellow-200 transition-colors flex items-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Gợi ý sản phẩm
-              </button>
+{result && (
+        <section className="mt-12 space-y-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">Kết quả phân tích đã sẵn sàng</h2>
+              <p className="text-gray-600">Xem chi tiết gợi ý và tùy chọn lưu, chia sẻ ngay bên dưới.</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
               <button
                 onClick={resetForm}
-                className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition-colors"
+                className="rounded-lg border border-primary-500 px-4 py-2 font-medium text-primary-600 transition-colors hover:bg-primary-50"
               >
                 Phân tích lại
+              </button>
+              <button
+                onClick={() => router.push('/early-access')}
+                className="rounded-lg bg-primary-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-primary-700"
+              >
+                Đăng kí dùng thử
               </button>
             </div>
           </div>
           <AnalysisResult result={result} />
-        </div>
+        </section>
       )}
     </main>
   );

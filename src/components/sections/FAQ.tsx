@@ -76,7 +76,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-brand-cream">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Câu Hỏi Thường Gặp</h2>
@@ -115,11 +115,11 @@ const FAQSection = () => {
             filteredFAQs.map((faq) => (
               <motion.div
                 key={faq.id}
-                className="border border-gray-200 rounded-xl overflow-hidden"
+                className="rounded-2xl border border-brand-taupe/40 bg-white/95 shadow-lg overflow-hidden backdrop-blur-sm"
                 initial={false}
               >
                 <button
-                  className="w-full flex justify-between items-center p-6 text-left bg-gray-50 hover:bg-gray-100 transition"
+                  className="w-full flex justify-between items-center p-6 text-left bg-gradient-to-r from-white via-white to-brand-cream/40 hover:from-brand-cream/70 hover:via-white transition-colors duration-300"
                   onClick={() => toggleFAQ(faq.id)}
                 >
                   <span className="text-lg font-medium text-gray-900">{faq.question}</span>
@@ -155,7 +155,7 @@ const FAQSection = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="p-6 pt-2 text-gray-600 bg-white">
+                      <div className="p-6 pt-0 text-brand-forest bg-brand-background/20 border-t border-brand-taupe/30">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -164,7 +164,7 @@ const FAQSection = () => {
               </motion.div>
             ))
           ) : (
-            <div className="text-center py-8 text-gray-50">
+            <div className="text-center py-8 text-brand-forest">
               <p>Không tìm thấy câu hỏi phù hợp. Vui lòng thử từ khóa khác.</p>
             </div>
           )}

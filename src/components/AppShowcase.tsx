@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const AppShowcase = () => {
   return (
-    <section id="app-showcase" className="section-padding bg-gray-50">
+    <section id="app-showcase" className="section-padding bg-brand-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2 
@@ -38,10 +38,10 @@ const AppShowcase = () => {
             <div className="grid grid-cols-2 gap-6">
               {/* App screenshot mockups */}
               <div className="relative">
-                <div className="bg-white rounded-3xl shadow-xl p-4 transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                  <div className="bg-gradient-to-br from-primary-100 to-pink-100 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
+                <div className="bg-brand-cream rounded-3xl shadow-xl p-4 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-primary-100 to-secondary-200 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
                     <div className="w-16 h-16 bg-primary-600 rounded-full mb-4 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-8 h-8 text-brand-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
@@ -52,10 +52,10 @@ const AppShowcase = () => {
               </div>
               
               <div className="relative mt-8">
-                <div className="bg-white rounded-3xl shadow-xl p-4 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                  <div className="bg-gradient-to-br from-primary-100 to-pink-100 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
-                    <div className="w-16 h-16 bg-pink-600 rounded-full mb-4 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-brand-cream rounded-3xl shadow-xl p-4 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-primary-100 to-secondary-200 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
+                    <div className="w-16 h-16 bg-primary-600 rounded-full mb-4 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-brand-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
                     </div>
@@ -66,10 +66,10 @@ const AppShowcase = () => {
               </div>
               
               <div className="relative">
-                <div className="bg-white rounded-3xl shadow-xl p-4 transform rotate-6 hover:rotate-0 transition-transform duration-300">
-                  <div className="bg-gradient-to-br from-primary-100 to-pink-100 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
+                <div className="bg-brand-cream rounded-3xl shadow-xl p-4 transform rotate-6 hover:rotate-0 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-primary-100 to-secondary-200 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
                     <div className="w-16 h-16 bg-primary-600 rounded-full mb-4 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-8 h-8 text-brand-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
@@ -80,10 +80,10 @@ const AppShowcase = () => {
               </div>
               
               <div className="relative mt-8">
-                <div className="bg-white rounded-3xl shadow-xl p-4 transform -rotate-6 hover:rotate-0 transition-transform duration-300">
-                  <div className="bg-gradient-to-br from-primary-100 to-pink-100 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
-                    <div className="w-16 h-16 bg-pink-600 rounded-full mb-4 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-brand-cream rounded-3xl shadow-xl p-4 transform -rotate-6 hover:rotate-0 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-primary-100 to-secondary-200 rounded-2xl h-80 flex flex-col items-center justify-center p-4">
+                    <div className="w-16 h-16 bg-primary-600 rounded-full mb-4 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-brand-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
@@ -165,7 +165,7 @@ const AppShowcase = () => {
             <div className="mt-8">
               <a 
                 href="/early-access" 
-                className="inline-block bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+                className="btn-primary"
               >
                 Tải ứng dụng ngay
               </a>

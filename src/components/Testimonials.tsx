@@ -5,50 +5,50 @@ import { motion } from 'framer-motion';
 const testimonials = [
   {
     id: 1,
-    name: "Dr. Linh Nguyen",
-    role: "Bác sĩ da liễu, Bệnh viện Bạch Mai",
-    content: "Là một chuyên gia y tế, tôi ấn tượng với độ chính xác trong phân tích da của AI. Nó nhận diện chính xác các tình trạng mà tôi thường chẩn đoán, và bệnh nhân rất thích những đề xuất được cá nhân hóa. Đây là một công cụ có giá trị cho việc chăm sóc phòng ngừa.",
-    avatar: "/ai-skincare-platform/avatars/linh-nguyen.jpg",
+    name: "Lương Đăng Doanh",
+    role: "Chuyên viên kiêm kĩ sư AI",
+    content: "Là chuyên gia với hơn 5 năm kinh nghiệm về AI, tôi nhận thấy healzone ứng dụng AI rất tốt, đúng kĩ thuật với độ chính xác cao, đưa ra được lời khuyên chi tiết và thân thiên với người dùng.",
+    avatar: "/picture/doanh.jpeg",
     rating: 5,
     caseStudyLink: "/case-studies/dermatologist-results",
     verified: true
   },
   {
     id: 2,
-    name: "Minh Hoang",
-    role: "Kỹ sư phần mềm",
-    content: "Tôi đã vật lộn với mụn trong nhiều năm. Sau 8 tuần sử dụng nền tảng AI, làn da của tôi sạch hơn so với thời trung học. Tính năng theo dõi tiến trình giúp tôi luôn giữ được động lực trong suốt hành trình.",
-    avatar: "/ai-skincare-platform/avatars/minh-hoang.jpg",
+    name: "Nguyễn Hạnh Duyên",
+    role: "Nhân viên văn phòng",
+    content: "Tôi đã vật lộn với mụn trong nhiều năm. Sau 8 tuần sử dụng nền tảng AI, làn da của tôi sạch hơn so với lúc mới đi làm và stress vì deadline. Tính năng đưa ra lộ trình cụ thể và lời khuyên giúp tôi luôn giữ được động lực trong suốt hành trình.",
+    avatar: "/picture/duyen.jpeg",
     rating: 5,
     caseStudyLink: "/case-studies/engineer-acne-journey",
     verified: true
   },
   {
     id: 3,
-    name: "Thuy Duong",
-    role: "Người ảnh hưởng về làm đẹp",
-    content: "Tôi đã thử hàng chục ứng dụng chăm sóc da, nhưng nền tảng AI này thực sự nổi bật. Việc phân tích rất chính xác, và những đề xuất sản phẩm đã thực sự cải thiện kết cấu da và giảm đáng kể tình trạng thâm nám.",
-    avatar: "/ai-skincare-platform/avatars/thuy-duong.jpg",
+    name: "Nguyễn Thị Tường Vy",
+    role: "Dancer & tiktoker",
+    content: "Tôi đã thử hàng chục ứng dụng chăm sóc da, nhưng nền tảng AI này thực sự nổi bật. Là người dùng mạng xã hội là chủ yếu, tôi ưu tiên việc chăm sóc sắc đẹp và gương mặt của mình, healzone luôn gợi ý cho tôi những sản phẩm rất tốt và phù hợp với bản thân, tôi muốn quảng cáo về nền tảng này cho nhiều người biết hơn.",
+    avatar: "/picture/vy.jpeg",
     rating: 5,
     caseStudyLink: "/case-studies/influencer-skincare-results",
     verified: true
   },
   {
     id: 4,
-    name: "Dr. Hung Pham",
-    role: "Bác sĩ phẫu thuật thẩm mỹ, Thẩm mỹ Đông Á",
-    content: "Tôi giới thiệu nền tảng này cho bệnh nhân để duy trì chăm sóc da hàng ngày. AI cung cấp lời khuyên bổ sung tuyệt vời giữa các liệu trình chuyên nghiệp của chúng tôi, giúp duy trì kết quả lâu hơn và ngăn ngừa các vấn đề mới.",
-    avatar: "/ai-skincare-platform/avatars/hung-pham.jpg",
+    name: "Nguyễn Lý Minh Kỳ",
+    role: "Rapper",
+    content: "Tôi được người quen giới thiệu nền tảng này để duy trì chăm sóc da hàng ngày. Tôi thấy healzone để xuất khá là chi tiết đầy đủ từng bước 1. Tuy nhiên tôi không có kiến thức về khía cạnh này, cũng mới trải nghiệm được vài ngày, da mặt có cái thiện nhưng để lâu dài hơn tôi mới có thể đưa ra nhận xét khách quan nhất được.",
+    avatar: "/picture/ky.jpeg",
     rating: 4,
     caseStudyLink: "/case-studies/cosmetic-surgeon-perspective",
     verified: true
   },
   {
     id: 5,
-    name: "Mai Anh",
-    role: "Sinh viên",
-    content: "Là một sinh viên có ngân sách hạn hẹp, tôi không thể thường xuyên đi khám bác sĩ da liễu. Ứng dụng này đã giúp tôi hiểu được loại da của mình và tìm được những sản phẩm phù hợp với giá cả. Sự tự tin của tôi đã cải thiện đáng kể!",
-    avatar: "/ai-skincare-platform/avatars/mai-anh.jpg",
+    name: "Nguyễn Thị Ngọc Trâm",
+    role: "Sinh viên FPT",
+    content: "Là một sinh viên có ngân sách hạn hẹp, tôi không thể thường xuyên đi khám bác sĩ da liễu. Ứng dụng này đã giúp tôi hiểu được loại da của mình và tìm được những sản phẩm phù hợp với giá cả. Chỉ sau 4 tuần, làn da của tôi đã cải thiện rõ rệt mà không tốn nhiều chi phí. Tôi sẽ giới thiệu cho bạn bè cùng sử dụng.",
+    avatar: "/picture/tram.jpeg",
     rating: 5,
     caseStudyLink: "/case-studies/student-budget-skincare",
     verified: true
@@ -58,7 +58,7 @@ const testimonials = [
     name: "Khanh Tran",
     role: "Người mẹ đi làm",
     content: "Với lịch trình bận rộn, tôi cần một giải pháp chăm sóc da hiệu quả. Nền tảng AI đã tạo ra một quy trình 5 phút phù hợp với lối sống của tôi. Chỉ sau 6 tuần, làn da mệt mỏi của tôi đã trở nên tươi tắn và trẻ trung hơn.",
-    avatar: "/ai-skincare-platform/avatars/khanh-tran.jpg",
+    avatar: "/picture/khanh-tran.jpg",
     rating: 5,
     caseStudyLink: "/case-studies/busy-mother-skincare",
     verified: true
@@ -67,7 +67,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="section-padding bg-white">
+    <section id="testimonials" className="section-padding bg-brand-cream">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2 
@@ -94,7 +94,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              className="bg-gray-50 p-6 rounded-xl shadow-sm h-full flex flex-col"
+              className="bg-white/95 p-6 rounded-2xl shadow-lg border border-brand-taupe/40 h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -119,7 +119,7 @@ const Testimonials = () => {
                   </span>
                 )}
               </div>
-              <p className="text-gray-600 mb-6 italic flex-grow">"{testimonial.content}"</p>
+              <p className="text-brand-forest mb-6 italic flex-grow">"{testimonial.content}"</p>
               <div className="mt-auto">
                 <div className="flex items-center mb-3">
                   <img 

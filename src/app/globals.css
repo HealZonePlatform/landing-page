@@ -2,81 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 @layer base {
+  :root {
+    --color-brand-background: #c6cbcd;
+    --color-brand-accent: #e19233;
+    --color-brand-ink: #121212;
+    --color-brand-forest: #60623d;
+    --color-brand-cream: #ffefce;
+    --color-brand-taupe: #a68e74;
+  }
+
   html {
     scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-white text-gray-900 font-sans antialiased;
+    background-color: var(--color-brand-background);
+    color: var(--color-brand-ink);
+    @apply font-sans antialiased;
   }
   
-  /* Cải thiện độ tương phản cho các phần tử văn bản */
   .text-contrast {
-    @apply text-gray-900;
+    color: var(--color-brand-ink);
   }
   
   .text-subtle {
-    @apply text-gray-700;
+    color: var(--color-brand-forest);
   }
   
   .text-muted {
-    @apply text-gray-600;
+    color: var(--color-brand-taupe);
   }
   
-  /* Đảm bảo độ tương phản cho các liên kết */
   a {
-    @apply text-primary-700 hover:text-primary-800;
+    @apply text-primary-500 hover:text-secondary-600 font-medium;
   }
   
   a:focus {
-    @apply outline outline-2 outline-offset-2 outline-primary-600;
-  }
-  
-  /* Cải thiện độ tương phản cho các tiêu đề */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-gray-900;
+    @apply outline outline-2 outline-offset-2 outline-primary-500;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    color: var(--color-brand-ink);
+    @apply font-heading font-bold;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
+    @apply bg-brand-forest hover:bg-brand-taupe text-brand-cream font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-forest focus:ring-offset-2;
   }
   
   .btn-outline {
-    @apply border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply border border-brand-accent text-brand-accent hover:bg-brand-cream font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2;
   }
   
-  /* Thêm hiệu ứng focus cho các thành phần tương tác khác */
   .focusable {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2;
   }
   
   .card {
-    @apply transition duration-300 ease-in-out hover:shadow-lg;
+    @apply transition duration-300 ease-in-out hover:shadow-lg bg-brand-cream text-brand-ink;
   }
   
   .card:focus-within {
-    @apply ring-2 ring-primary-500 ring-offset-2;
+    @apply ring-2 ring-brand-accent ring-offset-2;
   }
   
   .link {
-    @apply text-primary-600 hover:text-primary-800 transition duration-200 ease-in-out;
+    @apply text-brand-accent hover:text-brand-forest transition duration-200 ease-in-out;
   }
   
   .link:focus {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 rounded;
   }
 }
 
@@ -89,8 +91,6 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
-
-/* Add these animations at the end of globals.css */
 
 @keyframes blob {
   0% {
