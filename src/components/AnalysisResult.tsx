@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useRef } from 'react';
 import type { SkincareRoutine, RoutineStep } from '@/types';
 
 interface AnalysisResultProps {
@@ -84,16 +84,48 @@ export const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
     }
   };
 
-  // Hàm lưu PDF
-  const saveAsPDF = () => {
-    // In toàn bộ trang để người dùng có thể lưu dưới dạng PDF
-    window.print();
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const downloadResult = () => {
+    if (typeof window === 'undefined' || !sectionRef.current) return;
+
+    const styleSheets = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+      .map((el) => el.outerHTML)
+      .join('\n');
+
+    const documentHtml = `
+      <!DOCTYPE html>
+      <html lang="vi">
+        <head>
+          <meta charset="utf-8" />
+          <title>Kết quả phân tích da</title>
+          ${styleSheets}
+        </head>
+        <body class="${document.body.className}">
+          ${sectionRef.current.outerHTML}
+        </body>
+      </html>
+    `;
+
+    const blob = new Blob([documentHtml], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'ket-qua-phan-tich-da.html';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   // Hàm lưu kết quả
   const saveResult = () => {
-    // Lưu kết quả vào localStorage
-    localStorage.setItem('skincareResult', JSON.stringify(result));
+    // Chuẩn hóa dữ liệu trước khi lưu để tránh lưu blob URL hết hạn
+    const persistableResult: SkincareRoutine = {
+      ...result,
+      imageUrl: result.imageDataUrl || result.imageUrl,
+    };
+    localStorage.setItem('skincareResult', JSON.stringify(persistableResult));
     alert('Kết quả đã được lưu cục bộ!');
   };
 
@@ -121,9 +153,14 @@ export const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
     }
   };
 
+  const imageSrc = result.imageDataUrl || result.imageUrl;
+
   return (
-    <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 mb-24 animate-fade-in">
-      <div className="bg-slate-800 rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-slate-700">
+    <section
+      ref={sectionRef}
+      className="w-full mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-24 animate-fade-in"
+    >
+      <div className="bg-slate-800 rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-slate-700 max-w-5xl mx-auto">
         {/* Thêm phần nút điều khiển ở đầu component */}
         <div className="flex flex-wrap justify-between items-center mb-6 gap-2">
           <h2 className="text-3xl font-bold text-center text-white flex-1 min-w-fit">
@@ -151,14 +188,14 @@ export const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
               Chia sẻ
             </button>
             <button
-              onClick={saveAsPDF}
+              onClick={downloadResult}
               className="px-3 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors flex items-center text-sm"
-              title="Lưu dưới dạng PDF"
+              title="Tải về nội dung phân tích"
             >
               <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v14m0 0l-4-4m4 4l4-4M5 9h14"></path>
               </svg>
-              PDF
+              Tải về
             </button>
             <button
               onClick={() => {
@@ -177,15 +214,15 @@ export const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
         </div>
 
         {/* Hiển thị ảnh nếu có */}
-        {result.imageUrl && (
+        {imageSrc && (
           <div className="flex justify-center mb-8">
             <div className="relative max-w-xs mx-auto">
               <img 
-                src={result.imageUrl} 
+                src={imageSrc} 
                 alt="Ảnh phân tích da" 
                 className="w-full h-auto rounded-xl shadow-lg border-2 border-primary-500/30 object-cover max-h-80"
                 onError={(e) => {
-                  console.error('Không thể tải ảnh:', result.imageUrl);
+                  console.error('Không thể tải ảnh:', imageSrc);
                   e.currentTarget.style.display = 'none';
                 }}
               />

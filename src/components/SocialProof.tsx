@@ -44,7 +44,7 @@ const SocialProof = () => {
   }, []);
 
   return (
-    <section className="py-12 bg-gradient-to-r from-primary-50 to-pink-50">
+    <section className="py-12 bg-gradient-to-r from-primary-50 to-secondary-200">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Trust Badges */}
@@ -52,7 +52,7 @@ const SocialProof = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Được giới thiệu trên</h3>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               {['Healthline', 'WebMD', 'Allure', 'VnExpress', 'Tuoi Tre', 'Zing News'].map((publication, index) => (
-                <div key={index} className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100 flex items-center">
+                <div key={index} className="bg-brand-cream px-4 py-2 rounded-lg shadow-sm border border-gray-100 flex items-center">
                   <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-8" />
                   <span className="ml-2 text-sm font-medium text-gray-700">{publication}</span>
                 </div>
@@ -86,7 +86,7 @@ const SocialProof = () => {
         </div>
 
         {/* Recent Signups */}
-        <div className="mt-12 bg-white rounded-xl shadow-md p-6 border border-gray-100">
+        <div className="mt-12 bg-brand-cream rounded-xl shadow-md p-6 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
             <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>

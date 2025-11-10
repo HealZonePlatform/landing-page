@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { trackEarlyAccessSignup, trackFormSubmit, identifyUser } from '@/lib/analytics';
-import { handleEarlyAccessSignup } from '@/lib/emailService';
 
 export default function EarlyAccessPage() {
   const [email, setEmail] = useState('');
@@ -84,7 +84,7 @@ export default function EarlyAccessPage() {
       // Track form submission attempt
       trackFormSubmit('early_access', false); // Track as attempt first
       
-      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || 'https://formspree.io/f/YOUR_FORM_ID', {
+      const response = await fetch('/api/early-access', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,49 +92,56 @@ export default function EarlyAccessPage() {
         body: JSON.stringify({ name, email }),
       });
 
-      if (response.ok) {
-        // Successfully submitted - track success
-        trackFormSubmit('early_access', true);
-        trackEarlyAccessSignup(email);
-        identifyUser(email, { name, signupType: 'early_access' });
-        
-        // Send email notifications
-        const emailResult = await handleEarlyAccessSignup(email, name);
-        if (!emailResult.success) {
-          console.error('Email notification error:', emailResult.message);
-        }
-        
-        setIsSubmitted(true);
-        setEmail('');
-        setName('');
-      } else {
-        // Handle error response
-        console.error('Formspree submission failed:', await response.text());
-        trackFormSubmit('early_access', false);
-        alert('There was an error submitting your request. Please try again.');
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.message || 'Có lỗi xảy ra khi gửi yêu cầu truy cập sớm.');
       }
+
+      // Successfully submitted - track success
+      trackFormSubmit('early_access', true);
+      trackEarlyAccessSignup(email);
+      identifyUser(email, { name, signupType: 'early_access' });
+
+      setIsSubmitted(true);
+      setEmail('');
+      setName('');
     } catch (error) {
       console.error('Error submitting early access request:', error);
       trackFormSubmit('early_access', false);
-      alert('There was an error submitting your request. Please try again.');
+      const message =
+        error instanceof Error ? error.message : 'Có lỗi xảy ra khi gửi yêu cầu truy cập sớm.';
+      alert(message);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-200">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-32 w-80 h-80 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-secondary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
       </div>
 
       <div className="relative container mx-auto px-4 py-12">
         {/* Header */}
         <header className="flex justify-between items-center py-6">
-          <Link href="/" className="text-2xl font-bold text-primary-600">
-            AI Skincare
+          <Link
+            href="/"
+            className="flex items-center -ml-4 focus:outline-none focus-visible:outline-none"
+            aria-label="Về trang chủ HealZone"
+          >
+            <div className="relative h-14 w-56">
+              <Image
+                src="/picture/logo.png"
+                alt="HealZone logotype"
+                fill
+                sizes="224px"
+                className="object-contain"
+              />
+            </div>
           </Link>
           <Link
             href="/"
@@ -147,13 +154,13 @@ export default function EarlyAccessPage() {
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-[70vh] py-12">
           {/* Left content - Form */}
           <motion.div 
-            className="w-full lg:w-1/2 bg-white rounded-2xl shadow-xl p-8 mb-12 lg:mb-0 lg:mr-8"
+            className="w-full lg:w-1/2 bg-brand-cream rounded-2xl shadow-xl p-8 mb-12 lg:mb-0 lg:mr-8"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
             <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-3.9xl font-bold text-gray-900 mb-4 leading-snug">
                 Tải ứng dụng chăm sóc da AI của chúng tôi
               </h1>
               <p className="text-gray-600">
@@ -175,7 +182,7 @@ export default function EarlyAccessPage() {
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out"
+                  className="btn-primary"
                 >
                   Gửi yêu cầu khác
                 </button>
@@ -224,9 +231,7 @@ export default function EarlyAccessPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 ease-in-out ${
-                      isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-                    }`}
+                    className={`btn-primary w-full ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">
@@ -306,10 +311,11 @@ export default function EarlyAccessPage() {
               </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-md p-6 inline-block">
+            <div className="bg-brand-cream rounded-xl shadow-md p-6 inline-block">
+              <div className="text-2xl font-bold text-primary-600">Mục tiêu</div>
               <div className="flex space-x-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary-600">10,000+</div>
+                  <div className="text-2xl font-bold text-primary-600">5,000+</div>
                   <div className="text-sm text-gray-600">Người dùng hài lòng</div>
                 </div>
                 <div className="text-center">
@@ -317,14 +323,14 @@ export default function EarlyAccessPage() {
                   <div className="text-sm text-gray-600">Độ chính xác</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary-600">30 giây</div>
+                  <div className="text-2xl font-bold text-primary-600">9 giây</div>
                   <div className="text-sm text-gray-600">Thời gian phân tích</div>
                 </div>
               </div>
             </div>
 
             {/* Contact Info */}
-            <div className="mt-8 bg-gradient-to-r from-primary-50 to-pink-50 rounded-xl p-6">
+            <div className="mt-8 bg-gradient-to-r from-primary-50 to-secondary-200 rounded-xl p-6">
               <h3 className="font-bold text-gray-900 mb-4">Liên hệ với Horizon Team:</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center">
@@ -337,7 +343,7 @@ export default function EarlyAccessPage() {
                   <svg className="w-4 h-4 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  <span className="text-gray-700">Huỳnh Nhựt Huy - Team Leader</span>
+                  <span className="text-gray-700">CSKH - HorizonTeam</span>
                 </div>
                 <div className="flex items-center">
                   <svg className="w-4 h-4 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

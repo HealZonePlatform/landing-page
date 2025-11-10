@@ -11,4 +11,5 @@ export type SkincareRoutine = {
   pmRoutine: RoutineStep[];
   disclaimer: string;
   imageUrl?: string; // Thêm trường imageUrl để hiển thị ảnh trong kết quả phân tích
+  imageDataUrl?: string; // Lưu phiên bản base64 để tái sử dụng sau khi reload
 };

@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Dialog } from '@headlessui/react';
 
 const navigation = [
@@ -17,10 +18,20 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-white shadow-sm">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-primary-600">
-          AI Skincare
+    <header className="fixed w-full top-0 z-50 bg-brand-background/90 backdrop-blur shadow-sm">
+      <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
+        <Link href="/" className="flex items-center focus:outline-none focus-visible:outline-none">
+          <span className="sr-only">HealZone</span>
+          <div className="relative h-12 w-40">
+            <Image
+              src="/picture/logo.png"
+              alt="HealZone logotype"
+              fill
+              sizes="160px"
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -35,10 +46,7 @@ export default function Header() {
             </a>
           ))}
           {/* ✅ THAY ĐỔI NÀY: Link đến /early-access */}
-          <Link
-            href="/early-access"
-            className="btn-primary bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg transition-colors"
-          >
+          <Link href="/early-access" className="btn-primary">
             Tải ứng dụng
           </Link>
         </div>
@@ -73,10 +81,20 @@ export default function Header() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-brand-cream px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-primary-600">
-              AI Skincare
+            <Link href="/" className="flex items-center focus:outline-none focus-visible:outline-none">
+              <span className="sr-only">HealZone</span>
+              <div className="relative h-10 w-32">
+                <Image
+                  src="/picture/logo.png"
+                  alt="HealZone logotype"
+                  fill
+                  sizes="128px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </Link>
             <button
               type="button"
@@ -117,7 +135,7 @@ export default function Header() {
                 {/* ✅ THAY ĐỔI NÀY: Link đến /early-access */}
                 <Link
                   href="/early-access"
-                  className="btn-primary bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg inline-block text-center w-full"
+                  className="btn-primary w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Tải ứng dụng

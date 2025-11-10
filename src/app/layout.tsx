@@ -5,7 +5,49 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import StructuredData from '@/components/StructuredData';
 import { Suspense } from 'react';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+// src/app/layout.tsx
+import Script from 'next/script';
+// ...
+
+// .online
+
+{/* <head>
+  <StructuredData />
+  <Script
+    id="cookiebot"
+    strategy="beforeInteractive"
+    src="https://consent.cookiebot.com/uc.js"
+    data-cbid="b392c331-ece3-4272-a8a6-d784bd82cde3"
+    data-blockingmode="auto"
+  />
+</head> */}
+
+// .ngrok
+// The raw <head> block with <script> tags was removed because JSX/TSX files cannot contain literal HTML <head> sections
+// outside of a component; the unescaped `{}` in the script caused the "Unexpected token" compile error.
+// To include these scripts correctly, add them inside the RootLayout head using next/script, for example:
+//
+<head>
+  <Script
+    id="iubenda-config"
+    strategy="beforeInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `var _iub = _iub || []; _iub.csConfiguration = {"siteId":4300417,"cookiePolicyId":88998866,"lang":"en","storage":{"useSiteId":true}};`,
+    }}
+  />
+  <Script src="https://cs.iubenda.com/autoblocking/4300417.js" strategy="beforeInteractive" />
+  <Script src="//cdn.iubenda.com/cs/gpp/stub.js" strategy="beforeInteractive" />
+  <Script src="//cdn.iubenda.com/cs/iubenda_cs.js" strategy="beforeInteractive" />
+</head>
+//
+// Add the above Script elements inside the <head> of the RootLayout component to restore functionality.
 
 /**
  * Global metadata configuration for the Horizon Skincare landing page.
@@ -77,6 +119,11 @@ export const metadata: Metadata = {
   verification: {
     google: 'google-site-verification-code',
   },
+  icons: {
+    icon: '/picture/Iconlogo.png',
+    shortcut: '/picture/Iconlogo.png',
+    apple: '/picture/Iconlogo.png',
+  },
 };
 
 export default function RootLayout({
@@ -85,12 +132,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={inter.className}>
+    <html lang="vi" className={inter.variable}>
       <head>
         {/* Structured data improves SEO and helps search engines understand your site. */}
         <StructuredData />
       </head>
-      <body>
+      <body className="bg-brand-background text-brand-ink">
         {/* Global site tag for Google Analytics, injected only when the
             corresponding environment variable is provided. */}
         <GoogleAnalytics />
