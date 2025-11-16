@@ -143,7 +143,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-heading text-lg font-semibold text-brand-ink">Điện thoại</h4>
-                      <p className="text-brand-forest/80">0365265739</p>
+                      <p className="text-brand-ink/80">0365265739</p>
                     </div>
                   </div>
                   
@@ -153,7 +153,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-heading text-lg font-semibold text-brand-ink">Email</h4>
-                      <p className="text-brand-forest/80">contact@horizon-skincare.com</p>
+                      <p className="text-brand-ink/80">contact@horizon-skincare.com</p>
                     </div>
                   </div>
                   
@@ -163,7 +163,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-heading text-lg font-semibold text-brand-ink">Đội ngũ</h4>
-                      <p className="text-brand-forest/80">Horizon Team</p>
+                      <p className="text-brand-ink/80">Horizon Team</p>
                     </div>
                   </div>
 
@@ -173,7 +173,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-heading text-lg font-semibold text-brand-ink">Văn phòng</h4>
-                      <p className="text-brand-forest/80">FPT University, Thành phố Hồ Chí Minh</p>
+                      <p className="text-brand-ink/80">FPT University, Thành phố Hồ Chí Minh</p>
                     </div>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       required
-                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-forest/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
+                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-ink/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
                         errors.name ? 'border-red-500' : 'border-brand-taupe/40'
                       }`}
                       placeholder="Nguyễn Văn A"
@@ -209,7 +209,7 @@ const Contact = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       required
-                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-forest/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
+                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-ink/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
                         errors.email ? 'border-red-500' : 'border-brand-taupe/40'
                       }`}
                       placeholder="email@example.com"
@@ -227,7 +227,7 @@ const Contact = () => {
                       onBlur={handleBlur}
                       required
                       rows={4}
-                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-forest/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
+                      className={`w-full rounded-lg border px-4 py-3 bg-brand-background/10 text-brand-ink placeholder:text-brand-ink/60 shadow-sm transition focus:ring-2 focus:ring-primary-600 focus:border-transparent ${
                         errors.message ? 'border-red-500' : 'border-brand-taupe/40'
                       }`}
                       placeholder="Chúng tôi có thể giúp gì cho bạn?"

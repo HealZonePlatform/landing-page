@@ -119,7 +119,7 @@ const Testimonials = () => {
                   </span>
                 )}
               </div>
-              <p className="text-brand-forest mb-6 italic flex-grow">"{testimonial.content}"</p>
+              <p className="text-brand-ink/80 mb-6 italic flex-grow">"{testimonial.content}"</p>
               <div className="mt-auto">
                 <div className="flex items-center mb-3">
                   <img 

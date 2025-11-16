@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --color-brand-background: #c6cbcd;
-    --color-brand-accent: #e19233;
-    --color-brand-ink: #121212;
-    --color-brand-forest: #60623d;
-    --color-brand-cream: #ffefce;
-    --color-brand-taupe: #a68e74;
+    --color-brand-background: #eef6f6;
+    --color-brand-accent: #fc95ae;
+    --color-brand-ink: #112121;
+    --color-brand-forest: #54a4a6;
+    --color-brand-cream: #f9f6ee;
+    --color-brand-taupe: #98c8ca;
   }
 
   html {
@@ -74,7 +74,7 @@
   }
   
   .link {
-    @apply text-brand-accent hover:text-brand-forest transition duration-200 ease-in-out;
+    @apply text-brand-accent hover:text-brand-ink transition duration-200 ease-in-out;
   }
   
   .link:focus {

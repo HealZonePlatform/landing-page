@@ -67,12 +67,12 @@ const HowItWorks = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-brand-forest/70" />
               <div className="absolute -left-4 -top-4">
                 <div className="h-14 w-14 rounded-2xl border-2 border-brand-forest/80 bg-brand-forest/10 flex items-center justify-center shadow-sm">
-                  <span className="text-xl font-semibold text-brand-forest">{step.number}</span>
+                  <span className="text-xl font-semibold text-brand-accent">{step.number}</span>
                 </div>
               </div>
               <div className="mt-6">
                 <h3 className="text-xl font-bold text-brand-ink mb-3">{step.title}</h3>
-                <p className="text-brand-forest">{step.description}</p>
+                <p className="text-brand-ink/80">{step.description}</p>
               </div>
             </motion.div>
           ))}

@@ -97,7 +97,7 @@ const Features = () => {
                   <Icon className="h-7 w-7" strokeWidth={1.6} />
                 </div>
                 <h3 className="text-xl font-bold text-brand-ink mb-2">{feature.title}</h3>
-                <p className="text-brand-forest">{feature.description}</p>
+                <p className="text-brand-ink/80">{feature.description}</p>
               </motion.div>
             );
           })}

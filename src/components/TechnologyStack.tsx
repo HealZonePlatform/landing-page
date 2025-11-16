@@ -30,7 +30,7 @@ const technologies: Technology[] = [
   {
     name: 'Hướng dẫn từng bước',
     description: 'Checklist tự đánh dấu giúp bạn biết rõ đã làm đến đâu, không quên bất kỳ bước chăm da nào.',
-    icon: <ListChecks className="h-12 w-12 text-primary-500" strokeWidth={1.5} />,
+    icon: <ListChecks className="h-12 w-12 text-amber-500" strokeWidth={1.5} />,
   },
   {
     name: 'Nhắc lịch linh hoạt',

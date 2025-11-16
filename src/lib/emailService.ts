@@ -37,14 +37,14 @@ export const sendEarlyAccessConfirmation = async (email: string, name?: string):
   const subject = 'Welcome to AI Skincare Early Access Program';
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #e19233;">Welcome to AI Skincare Early Access Program!</h2>
+      <h2 style="color: #fc95ae;">Welcome to AI Skincare Early Access Program!</h2>
       <p>Dear ${name || 'Valued Customer'},</p>
       <p>Thank you for signing up for early access to our AI Skincare platform. We're excited to have you on board!</p>
       <p>Our team is working hard to bring you the best AI-powered skincare experience. You'll be among the first to know when our app is ready for download.</p>
-      <p>While you wait, feel free to explore our <a href="https://healzoneplatform.github.io/ai-skincare-platform/" style="color: #e19233;">website</a> to learn more about our technology and features.</p>
+      <p>While you wait, feel free to explore our <a href="https://healzoneplatform.github.io/ai-skincare-platform/" style="color: #fc95ae;">website</a> to learn more about our technology and features.</p>
       <p>Best regards,<br>The AI Skincare Team</p>
-      <hr style="margin: 20px 0; border: none; border-top: 1px solid #c6cbcd;">
-      <p style="font-size: 12px; color: #121212;">This email was sent to ${email} because you signed up for early access to the AI Skincare platform.</p>
+      <hr style="margin: 20px 0; border: none; border-top: 1px solid #cce4e4;">
+      <p style="font-size: 12px; color: #112121;">This email was sent to ${email} because you signed up for early access to the AI Skincare platform.</p>
     </div>
   `;
 
@@ -60,7 +60,7 @@ export const sendAdminNotification = async (email: string, name?: string): Promi
   const subject = `New Early Access Signup: ${name || email}`;
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #e19233;">New Early Access Signup</h2>
+      <h2 style="color: #fc95ae;">New Early Access Signup</h2>
       <p>A new user has signed up for early access to the AI Skincare platform:</p>
       <ul>
         <li><strong>Name:</strong> ${name || 'Not provided'}</li>

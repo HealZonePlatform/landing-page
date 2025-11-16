@@ -319,7 +319,7 @@ export default function EarlyAccessPage() {
                   <div className="text-sm text-gray-600">Người dùng hài lòng</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary-60">96%</div>
+                  <div className="text-2xl font-bold text-emerald-500">96%</div>
                   <div className="text-sm text-gray-600">Độ chính xác</div>
                 </div>
                 <div className="text-center">

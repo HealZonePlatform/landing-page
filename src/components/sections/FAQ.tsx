@@ -155,7 +155,7 @@ const FAQSection = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="p-6 pt-0 text-brand-forest bg-brand-background/20 border-t border-brand-taupe/30">
+                      <div className="p-6 pt-0 text-brand-ink/80 bg-brand-background/20 border-t border-brand-taupe/30">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -164,7 +164,7 @@ const FAQSection = () => {
               </motion.div>
             ))
           ) : (
-            <div className="text-center py-8 text-brand-forest">
+            <div className="text-center py-8 text-brand-ink/80">
               <p>Không tìm thấy câu hỏi phù hợp. Vui lòng thử từ khóa khác.</p>
             </div>
           )}
